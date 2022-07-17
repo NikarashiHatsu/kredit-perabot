@@ -40,9 +40,9 @@
             </div>
         </div>
 
-        <header class="border-b p-2 sticky top-0 z-50 bg-white">
+        <header class="border-b p-2 sticky top-0 z-30 bg-white">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <a href="javascript:void(0)" class="text-xl lg:text-3xl font-bold tracking-wider">
+                <a href="{{ route('index') }}" class="text-xl lg:text-3xl font-bold tracking-wider">
                     Kredit<span class="text-blue-500">IN</span>
                 </a>
                 <div class="flex-grow px-4 relative mx-2 md:mx-4 hidden sm:flex">
@@ -90,8 +90,23 @@
         </header>
 
         <div class="font-sans text-gray-900 antialiased">
-            <div class="max-w-7xl mx-auto p-2">
+            <div class="max-w-7xl mx-auto p-2 py-6">
                 {{ $slot }}
+            </div>
+        </div>
+
+        <div class="bg-blue-500 mb-4">
+            <div class="text-xs md:text-base mx-auto max-w-7xl p-4 flex justify-around items-center">
+                <div class="flex items-center">
+                    <div class="font-semibold text-white hidden sm:flex">
+                        Belanja Lebih Cepat<br/>
+                        via KreditIN Mobile Apps
+                    </div>
+                </div>
+                <div class="hidden sm:flex">
+                    <img src="{{ asset('images/google-play-badge.png') }}" class="h-6 md:h-12 object-contain">
+                    <img src="{{ asset('images/app-store-badge.svg') }}" class="h-6 md:h-12 ml-2 object-contain">
+                </div>
             </div>
         </div>
 
@@ -252,4 +267,6 @@
             </div>
         </footer>
     </body>
+
+    {!! $script ?? "" !!}
 </html>

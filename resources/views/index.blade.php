@@ -1,3 +1,3 @@
 <x-guest-layout>
-    Ini halaman Index
+    TODO: Halaman Index https://www.ruparupa.com/
 </x-guest-layout>
