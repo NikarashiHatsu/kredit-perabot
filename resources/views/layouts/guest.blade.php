@@ -40,9 +40,9 @@
             </div>
         </div>
 
-        <header class="border-b p-2 sticky top-0 z-30 bg-white">
+        <header class="border-b p-4 sm:p-2 sticky top-0 z-30 bg-white">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <a href="{{ route('index') }}" class="text-xl lg:text-3xl font-bold tracking-wider">
+                <a href="{{ route('index') }}" class="text-2xl lg:text-3xl font-bold tracking-wider">
                     Kredit<span class="text-blue-500">IN</span>
                 </a>
                 <div class="flex-grow px-4 relative mx-2 md:mx-4 hidden sm:flex">
@@ -90,7 +90,7 @@
         </header>
 
         <div class="font-sans text-gray-900 antialiased">
-            <div class="max-w-7xl mx-auto p-2 py-6">
+            <div class="max-w-7xl mx-auto p-4 py-6">
                 {{ $slot }}
             </div>
         </div>
@@ -98,12 +98,12 @@
         <div class="bg-blue-500 mb-4">
             <div class="text-xs md:text-base mx-auto max-w-7xl p-4 flex justify-around items-center">
                 <div class="flex items-center">
-                    <div class="font-semibold text-white hidden sm:flex">
+                    <div class="font-semibold text-white">
                         Belanja Lebih Cepat<br/>
                         via KreditIN Mobile Apps
                     </div>
                 </div>
-                <div class="hidden sm:flex">
+                <div class="flex">
                     <img src="{{ asset('images/google-play-badge.png') }}" class="h-6 md:h-12 object-contain">
                     <img src="{{ asset('images/app-store-badge.svg') }}" class="h-6 md:h-12 ml-2 object-contain">
                 </div>
@@ -112,30 +112,30 @@
 
         <footer>
             <div class="w-full border-b mb-4">
-                <div class="max-w-7xl mx-auto pb-2 sm:pb-4 p-2 flex justify-between items-center">
-                    <a href="javascript:void(0)" class="text-4xl font-bold tracking-wider">
+                <div class="max-w-7xl mx-auto pb-2 sm:pb-4 p-4 flex justify-between items-center">
+                    <a href="javascript:void(0)" class="text-2xl md:text-4xl font-bold tracking-wider">
                         Kredit<span class="text-blue-500">IN</span>
                     </a>
                     <div class="flex items-center">
                         <a href="javascript:void">
-                            <x-phosphor-facebook-logo-fill class="w-6 h-6 ml-2 text-gray-700" />
+                            <x-phosphor-facebook-logo-fill class="w-5 sm:w-6 h-5 sm:h-6 ml-2 text-gray-700" />
                         </a>
                         <a href="javascript:void">
-                            <x-phosphor-twitter-logo-fill class="w-6 h-6 ml-2 text-gray-700" />
+                            <x-phosphor-twitter-logo-fill class="w-5 sm:w-6 h-5 sm:h-6 ml-2 text-gray-700" />
                         </a>
                         <a href="javascript:void">
-                            <x-phosphor-instagram-logo-fill class="w-6 h-6 ml-2 text-gray-700" />
+                            <x-phosphor-instagram-logo-fill class="w-5 sm:w-6 h-5 sm:h-6 ml-2 text-gray-700" />
                         </a>
                         <a href="javascript:void">
-                            <x-phosphor-linkedin-logo-fill class="w-6 h-6 ml-2 text-gray-700" />
+                            <x-phosphor-linkedin-logo-fill class="w-5 sm:w-6 h-5 sm:h-6 ml-2 text-gray-700" />
                         </a>
                         <a href="javascript:void">
-                            <x-phosphor-youtube-logo-fill class="w-6 h-6 ml-2 text-gray-700" />
+                            <x-phosphor-youtube-logo-fill class="w-5 sm:w-6 h-5 sm:h-6 ml-2 text-gray-700" />
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="max-w-7xl mx-auto p-2 pb-4 mb-4 border-b">
+            <div class="max-w-7xl mx-auto p-4 pb-4 mb-4 border-b">
                 <div class="grid grid-cols-12 grid-flow-row gap-6">
                     <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
                         <h4 class="text-xl font-bold mb-4">
@@ -202,11 +202,11 @@
                     </div>
                 </div>
             </div>
-            <div class="max-w-7xl mx-auto p-2 pb-4 mb-4 border-b">
+            <div class="max-w-7xl mx-auto p-4 pb-4 mb-4 border-b">
                 <div class="grid grid-cols-12 grid-flow-row gap-6">
                     <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
                         <h4 class="text-xl font-bold mb-4">
-                            Cicilan 0%
+                            Cicilan 2,5%
                         </h4>
                         <ol class="grid grid-cols-4 grid-flow-row gap-2">
                             <li><img class="w-full h-8" src="{{ asset('images/cicilan/logo-bni.png') }}" /></li>
@@ -262,7 +262,7 @@
                     </div>
                 </div>
             </div>
-            <div class="max-w-7xl mx-auto p-2 flex justify-end mb-8 text-gray-400">
+            <div class="max-w-7xl mx-auto p-4 flex justify-end mb-8 text-gray-400">
                 &copy; Aghits Nidallah {{ date('Y') }}
             </div>
         </footer>

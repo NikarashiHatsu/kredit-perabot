@@ -9,7 +9,7 @@
         class="flex flex-col"
     >
         <div class="grid grid-cols-12 grid-flow-row gap-6">
-            <div class="col-span-12 lg:col-span-8">
+            <div class="col-span-12 sm:col-span-7 md:col-span-8">
                 <x-swiper>
                     <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded" src="" /></div>
                     <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded" src="" /></div>
@@ -106,9 +106,9 @@
                             Pengiriman Tersedia
                         </span>
                     </div>
-                    {{-- <div class="border border-red-500 rounded-b bg-red-100 p-4 flex items-center justify-center mb-8">
+                    {{-- <div class="!border border-red-500-b bg-red-100 p-4 flex items-center justify-center mb-8">
                         <x-phosphor-x-circle-fill class="w-6 h-6 text-red-700 opacity-75" />
-                        <span class="ml-2 text-red-700">
+                        <span class="ml-2 rounded text-red-700white
                             Pengiriman Tidak Tersedia
                         </span>
                     </div> --}}
@@ -161,7 +161,7 @@
                     <h5 class="text-xl tracking-wide font-semibold mb-4">
                         Ulasan
                     </h5>
-                    <div class="w-full flex mb-4">
+                    <div class="w-full flex flex-col-reverse md:flex-row mb-4">
                         <div class="flex flex-col">
                             <div class="flex items-center mb-3">
                                 <span>5</span>
@@ -194,7 +194,7 @@
                                 <span>0</span>
                             </div>
                         </div>
-                        <div class="flex flex-col items-center justify-center flex-grow">
+                        <div class="flex flex-col items-center justify-center flex-grow mb-6 md:mb-0">
                             <h1 class="text-5xl font-bold mb-2">5</h2>
                             <div class="flex mb-2">
                                 <x-phosphor-star-fill class="w-5 h-5 text-yellow-400" />
@@ -266,7 +266,7 @@
                 </div>
             </div>
 
-            <div class="col-span-12 lg:col-span-4">
+            <div class="col-span-12 sm:col-span-5 md:col-span-4">
                 <div class="bg-white border rounded sticky top-24">
                     <div class="p-4 border-b">
                         <h3 class="text-2xl font-bold text-rose-500 mb-6">
@@ -345,89 +345,89 @@
                 </span>
             </div>
 
-            <div class="grid grid-cols-6 grid-flow-row gap-2 mb-6">
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 grid-flow-row gap-2 mb-6">
                 <a href="javascript:void(0)" x-on:click="selected = 'BNI'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'BNI' }"
+                        x-bind:class="{ '!border-red-500': selected == 'BNI' }"
                         src="{{ asset('images/cicilan/logo-bni.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'BCA'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'BCA' }"
+                        x-bind:class="{ '!border-red-500': selected == 'BCA' }"
                         src="{{ asset('images/cicilan/logo-bca.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'BRI'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'BRI' }"
+                        x-bind:class="{ '!border-red-500': selected == 'BRI' }"
                         src="{{ asset('images/cicilan/logo-bri.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'CITI'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'CITI' }"
+                        x-bind:class="{ '!border-red-500': selected == 'CITI' }"
                         src="{{ asset('images/cicilan/logo-citi1.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'CIMB'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'CIMB' }"
+                        x-bind:class="{ '!border-red-500': selected == 'CIMB' }"
                         src="{{ asset('images/cicilan/logo-cimb.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'HSBC'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'HSBC' }"
+                        x-bind:class="{ '!border-red-500': selected == 'HSBC' }"
                         src="{{ asset('images/cicilan/logo-hsbc.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'Mandiri'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'Mandiri' }"
+                        x-bind:class="{ '!border-red-500': selected == 'Mandiri' }"
                         src="{{ asset('images/cicilan/logo-mandiri.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'OCBC'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'OCBC' }"
+                        x-bind:class="{ '!border-red-500': selected == 'OCBC' }"
                         src="{{ asset('images/cicilan/logo-ocbc.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'Permata'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'Permata' }"
+                        x-bind:class="{ '!border-red-500': selected == 'Permata' }"
                         src="{{ asset('images/cicilan/logo-permata.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'Digibank'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'Digibank' }"
+                        x-bind:class="{ '!border-red-500': selected == 'Digibank' }"
                         src="{{ asset('images/cicilan/logo-digibank.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'UOB'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'UOB' }"
+                        x-bind:class="{ '!border-red-500': selected == 'UOB' }"
                         src="{{ asset('images/cicilan/logo-uob.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
                 <a href="javascript:void(0)" x-on:click="selected = 'MEGA'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'MEGA' }"
+                        x-bind:class="{ '!border-red-500': selected == 'MEGA' }"
                         src="{{ asset('images/cicilan/logo-mega.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
             </div>
@@ -439,12 +439,12 @@
                 </span>
             </div>
 
-            <div class="grid grid-cols-6 grid-flow-row gap-2 mb-6">
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 grid-flow-row gap-2 mb-6">
                 <a href="javascript:void(0)" x-on:click="selected = 'Kredivo'">
                     <img
-                        x-bind:class="{ 'border-red-500 rounded': selected == 'Kredivo' }"
+                        x-bind:class="{ '!border-red-500': selected == 'Kredivo' }"
                         src="{{ asset('images/pembayaran/kredivo.png') }}"
-                        class="w-full border-2 border-transparent"
+                        class="w-full rounded border border-white"
                     />
                 </a>
             </div>
@@ -456,7 +456,7 @@
                 </span>
             </div>
 
-            <div class="grid grid-cols-5 grid-flow-row gap-2 mb-6">
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 grid-flow-row gap-2 mb-6">
                 <a href="javascript:void(0)" x-on:click="duration = 12" x-bind:class="{ 'border-red-500': duration == 12 }" class="w-full p-2 text-sm border rounded-xl text-center">
                     12 Bulan
                 </a>
@@ -481,7 +481,7 @@
                 <span>
                     Bunga (2,5%)
                 </span>
-                <span x-html="formatter.format(price * (2.49/100) * duration)"></span>
+                <span x-html="formatter.format(price * (2.5/100) * duration)"></span>
             </p>
             <p class="flex justify-between mb-4">
                 <span>
@@ -494,11 +494,11 @@
                     Cicilan <span x-html="duration"></span>x
                 </span>
                 <div class="flex">
-                    <span x-html="formatter.format((price / (duration != 0 ? duration : 1)) + (price * (duration != 0 ? 2.49/100 : 0)) + (price * (1.75/100)))" class="font-bold"></span>/bulan
+                    <span x-html="formatter.format((price / (duration != 0 ? duration : 1)) + (price * (duration != 0 ? 2.5/100 : 0)) + (price * (1.75/100)))" class="font-bold"></span>/bulan
                 </div>
             </div>
             <div class="flex justify-end text-sm italic">
-                Harga * 2,5% * Durasi Cicilan + Biaya Layanan
+                Cicilan per-bulan = ((Harga / Durasi Cicilan) * 2,5%) + Biaya Layanan
             </div>
         </x-modal>
     </div>

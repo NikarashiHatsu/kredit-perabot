@@ -17,10 +17,10 @@
     ></div>
 
     <div
-        class="max-w-xl w-full z-50"
+        class="max-w-xl w-full z-50 p-4 max-h-screen"
         x-on:keyup.escape="{{!! $attributes->get('x-show') !!}} = false"
     >
-        <div class="bg-white rounded p-6 w-full relative">
+        <div class="bg-white rounded p-6 w-full relative max-h-screen overflow-y-auto">
             <div class="top-5 right-5 absolute">
                 <a
                     href="javascript:void(0)"
