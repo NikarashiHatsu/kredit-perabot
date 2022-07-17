@@ -14,10 +14,17 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="text-gray-700">
-        <div class="bg-blue-500">
+        <div
+            x-data="{ closed: false }"
+            class="bg-blue-500"
+            x-show="!closed"
+            x-transition
+        >
             <div class="text-xs md:text-base mx-auto max-w-7xl p-2 flex justify-between items-center">
                 <div class="flex items-center">
-                    <x-phosphor-x-circle-fill class="w-6 h-6 text-white opacity-75" />
+                    <a href="javascript:void(0)" x-on:click="closed = true">
+                        <x-phosphor-x-circle-fill class="w-6 h-6 text-white opacity-75" />
+                    </a>
                     <div class="font-semibold text-white ml-4 hidden sm:flex">
                         Belanja hemat bebas ongkir*
                     </div>
