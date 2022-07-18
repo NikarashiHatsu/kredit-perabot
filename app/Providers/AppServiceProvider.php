@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        fake()->addProvider(new \Bezhanov\Faker\Provider\Commerce(fake()));
     }
 }
