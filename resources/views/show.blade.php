@@ -320,7 +320,7 @@
                             class="transition duration-300 ease-in-out border border-orange-500 w-full flex justify-center items-center py-3 rounded text-sm"
                         >
                             <span>
-                                Tambah ke Keranjang
+                                <span x-html="isOnCart ? 'Hapus dari' : 'Tambah ke'"></span> Keranjang
                             </span>
                             <x-phosphor-shopping-cart-fill class="w-4 h-4 ml-2"/>
                         </button>

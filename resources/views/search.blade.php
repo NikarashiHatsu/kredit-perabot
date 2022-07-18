@@ -97,7 +97,7 @@
             <div class="bg-white p-4 border rounded">
                 <div class="grid grid-cols-4 grid-flow-row gap-4">
                     @for ($i = 0; $i < $productCount; $i++)
-                        <div class="col-span-4 sm:col-span-2 lg:col-span-1 border border-gray-200 rounded">
+                        <a href="{{ route('show', $productName = str()->slug(fake()->productName)) }}" class="col-span-4 sm:col-span-2 lg:col-span-1 border border-gray-200 rounded">
                             <div class="aspect-w-1 aspect-h-1">
                                 <img src="https://via.placeholder.com/300.png" alt="" class="w-full h-full rounded-t object-cover">
                             </div>
@@ -107,7 +107,7 @@
                                         Rp{{ number_format(rand(150000, 1000000), 0, '.', '.') }}
                                     </p>
                                     <p class="text-gray-600 text-sm mb-1">
-                                        {{ fake()->productName }}
+                                        {{ str()->title(str_replace('-', ' ', $productName)) }}
                                     </p>
                                     <p class="flex text-xs items-center mb-2">
                                         <x-phosphor-star-fill class="w-4 h-4 text-yellow-400" />
@@ -119,12 +119,12 @@
                                             Ulasan
                                         </span>
                                     </p>
-                                    <button class="text-center w-full text-sm bg-blue-500 rounded p-2 text-white mt-auto">
+                                    <button class="transition duration-300 ease-in-out text-center w-full text-sm bg-blue-500 hover:bg-blue-600 rounded p-2 text-white mt-auto">
                                         Lihat Produk
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     @endfor
                 </div>
             </div>
