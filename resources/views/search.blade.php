@@ -107,7 +107,7 @@
                                         Rp{{ number_format(rand(150000, 1000000), 0, '.', '.') }}
                                     </p>
                                     <p class="text-gray-600 text-sm mb-1">
-                                        {{ str()->title(str_replace('-', ' ', $productName)) }}
+                                        {{ str()->headline($productName) }}
                                     </p>
                                     <p class="flex text-xs items-center mb-2">
                                         <x-phosphor-star-fill class="w-4 h-4 text-yellow-400" />
