@@ -2,7 +2,7 @@
     <div
         x-data="{
             price: {{ rand(250000, 10000000) }},
-            modalOpened: false,
+            modalOpened: true,
             quantity: 1,
             formatter: new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' })
         }"
@@ -333,7 +333,7 @@
             x-show="modalOpened"
             x-data="{
                 selected: 'BNI',
-                duration: 12,
+                duration: 0,
             }"
         >
             <x-slot name="title">Simulasi Cicilan</x-slot>
@@ -455,21 +455,72 @@
                     Mau cicil berapa lama?
                 </span>
             </div>
+            <p class="text-xs italic">
+                * Cicilan 3 bulan, minimal transaksi Rp1.000.000,-
+            </p>
+            <p class="text-xs italic">
+                * Cicilan 6 bulan, minimal transaksi Rp3.000.000,-
+            </p>
+            <p class="text-xs italic">
+                * Cicilan 9 bulan, minimal transaksi Rp5.000.000,-
+            </p>
+            <p class="text-xs italic mb-3">
+                * Cicilan 12 bulan, minimal transaksi Rp10.000.000,-
+            </p>
 
-            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 grid-flow-row gap-2 mb-6">
-                <a href="javascript:void(0)" x-on:click="duration = 12" x-bind:class="{ 'border-orange-500': duration == 12 }" class="w-full p-2 text-sm border rounded-xl text-center">
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 grid-flow-row gap-2 mb-6">
+                <a
+                    href="javascript:void(0)"
+                    x-on:click="price > 10000000 ? duration = 12 : null"
+                    x-bind:class="{
+                        'border-orange-500': duration == 12,
+                        'opacity-20': price < 10000000,
+                    }"
+                    class="w-full p-2 text-sm border rounded-xl text-center"
+                >
                     12 Bulan
                 </a>
-                <a href="javascript:void(0)" x-on:click="duration = 9" x-bind:class="{ 'border-orange-500': duration == 9 }" class="w-full p-2 text-sm border rounded-xl text-center">
+                <a
+                    href="javascript:void(0)"
+                    x-on:click="price > 5000000 ? duration = 9 : null"
+                    x-bind:class="{
+                        'border-orange-500': duration == 9,
+                        'opacity-20': price < 5000000,
+                    }"
+                    class="w-full p-2 text-sm border rounded-xl text-center"
+                >
                     9 Bulan
                 </a>
-                <a href="javascript:void(0)" x-on:click="duration = 6" x-bind:class="{ 'border-orange-500': duration == 6 }" class="w-full p-2 text-sm border rounded-xl text-center">
+                <a
+                    href="javascript:void(0)"
+                    x-on:click="price > 3000000 ? duration = 6 : null"
+                    x-bind:class="{
+                        'border-orange-500': duration == 6,
+                        'opacity-20': price < 3000000,
+                    }"
+                    class="w-full p-2 text-sm border rounded-xl text-center"
+                >
                     6 Bulan
                 </a>
-                <a href="javascript:void(0)" x-on:click="duration = 3" x-bind:class="{ 'border-orange-500': duration == 3 }" class="w-full p-2 text-sm border rounded-xl text-center">
+                <a
+                    href="javascript:void(0)"
+                    x-on:click="price > 1000000 ? duration = 3 : null"
+                    x-bind:class="{
+                        'border-orange-500': duration == 3,
+                        'opacity-20': price < 1000000,
+                    }"
+                    class="w-full p-2 text-sm border rounded-xl text-center"
+                >
                     3 Bulan
                 </a>
-                <a href="javascript:void(0)" x-on:click="duration = 0" x-bind:class="{ 'border-orange-500': duration == 0 }" class="w-full p-2 text-sm border rounded-xl text-center">
+                <a
+                    href="javascript:void(0)"
+                    x-on:click="duration = 0"
+                    x-bind:class="{
+                        'border-orange-500': duration == 0,
+                    }"
+                    class="w-full p-2 text-sm border rounded-xl text-center"
+                >
                     Bayar Nanti
                 </a>
             </div>
