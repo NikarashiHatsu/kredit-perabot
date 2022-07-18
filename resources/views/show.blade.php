@@ -2,7 +2,7 @@
     <div
         x-data="{
             price: {{ rand(250000, 10000000) }},
-            modalOpened: true,
+            modalOpened: false,
             quantity: 1,
             formatter: new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' })
         }"
