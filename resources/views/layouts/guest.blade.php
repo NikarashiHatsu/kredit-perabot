@@ -45,18 +45,24 @@
                 <a href="{{ route('index') }}" class="text-2xl lg:text-3xl font-bold tracking-wider">
                     Kredit<span class="text-blue-500">IN</span>
                 </a>
-                <div class="flex-grow px-4 relative mx-2 md:mx-4 hidden sm:flex">
+                <form action="{{ route('search') }}" class="flex-grow px-4 relative mx-2 md:mx-4 hidden sm:flex">
                     <div class="hidden lg:flex w-64 border border-gray-300 rounded-l border-r-0 items-center px-4">
                         <x-phosphor-list-dashes-bold class="w-4 md:w-6 h-4:h-6" />
                         <span class="ml-2 text-xs">
                             Kategori Belanjang
                         </span>
                     </div>
-                    <input type="text" class="w-full h-full border border-gray-300 text-xs md:text-sm" placeholder="Cari produk atau merek...">
+                    <input
+                        type="text"
+                        name="query"
+                        class="w-full h-full border border-gray-300 text-xs md:text-sm"
+                        placeholder="Cari produk atau merek..."
+                        value="{{ request()->get('query') ?? '' }}"
+                    >
                     <button type="submit" class="bg-blue-500 rounded-r w-16 flex justify-center items-center">
                         <x-phosphor-magnifying-glass-bold class="text-white w-4 h-4" />
                     </button>
-                </div>
+                </form>
                 <div class="items-center flex">
                     <a href="javascript:void(0)" class="transition duration-300 ease-in-out items-center hover:bg-gray-200 p-2 rounded h-full flex sm:hidden">
                         <x-phosphor-magnifying-glass-bold class="w-4 md:w-6 h-4:h-6" />

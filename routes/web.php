@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'index')->name('index');
 Route::view('/product/{slug}', 'show')->name('show');
-// TODO: Pencarian: https://www.ruparupa.com/rak-dan-penyimpanan/gantungan/gantungan-baju.html
+Route::view('/search', 'search')->name('search');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
