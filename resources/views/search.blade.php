@@ -2,7 +2,7 @@
     <div class="grid grid-cols-12 grid-flow-row gap-6">
         <div class="col-span-12 sm:col-span-5 md:col-span-4 lg:col-span-3">
             <div class="bg-orange-100 p-4 text-sm mb-6">
-                Menampilkan <b>{{ $productCount = rand(1, 48) }}</b> produk dalam <b>Semua Kategori</b>
+                Menampilkan <b>{{ $productCount = rand(1, 48) }}</b> produk dalam <b>{{ str()->headline(request()->category) }}</b>
                 dengan kata kunci <b>{{ request()->get('query') }}</b>
             </div>
 
