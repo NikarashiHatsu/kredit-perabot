@@ -27,7 +27,7 @@
     </div>
 
     <div class="pb-8 mb-8 border-b">
-        <div class="w-full bg-orange-500 rounded h-64 relative">
+        <div class="w-full bg-blue-500 rounded h-64 relative">
             <div class="absolute inset-0 flex flex-col items-center justify-start pt-8">
                 <div class="text-white text-center text-xl font-bold">
                     Flash Sale
@@ -68,7 +68,7 @@
                     </div>
                 </a>
             @endfor
-            <a href="javascript:void(0)" class="transition duration-300 ease-in-out col-span-12 py-2 text-center border border-orange-500 rounded text-orange-500 hover:text-white hover:bg-orange-500">
+            <a href="javascript:void(0)" class="transition duration-300 ease-in-out col-span-12 py-2 text-center border border-blue-500 rounded text-blue-500 hover:text-white hover:bg-blue-500">
                 Lihat Semua Produk Penawaran Spesial
             </a>
         </div>
