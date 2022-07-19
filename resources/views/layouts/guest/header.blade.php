@@ -78,7 +78,7 @@
                     Status<br/>Pesanan
                 </span>
             </a>
-            <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full ml-0 md:ml-3">
+            <a href="{{ route('login') }}" class="transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full ml-0 md:ml-3">
                 <x-phosphor-user-bold class="w-4 md:w-6 h-4 md:h-6" />
                 <span class="ml-4 text-xs hidden sm:flex">
                     Masuk / Daftar
