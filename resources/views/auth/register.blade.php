@@ -100,7 +100,7 @@
 
         <div class="hidden sm:block col-span-12 sm:col-span-5 lg:col-span-7 xl:col-span-8">
             <div class="h-screen">
-                <img src="{{ asset('images/background/mathias-reding-wUI9YcM1VLY-unsplash.jpg') }}" class="w-full h-full object-cover" />
+                <img src="{{ asset('images/background/samuel-beer-JL-k4vMQHOQ-unsplash.jpg') }}" class="w-full h-full object-cover" />
             </div>
         </div>
     </div>
