@@ -18,11 +18,13 @@ class ApplicationSettingController extends Controller
     {
         $request->validate([
             'interest_rate' => ['required', 'numeric'],
+            'service_rate' => ['required', 'numeric'],
         ]);
 
         try {
             $applicationSetting->update([
                 'interest_rate' => $request->interest_rate,
+                'service_rate' => $request->service_rate,
             ]);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Gagal mengubah pengaturan: ' . $th->getMessage());

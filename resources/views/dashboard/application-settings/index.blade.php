@@ -27,6 +27,17 @@
                         @enderror
                     </div>
                 </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
+                        <label for="service_rate" class="mb-2">Biaya Layanan (%) <span class="text-red-500">*</span></label>
+                        <input type="text" name="service_rate" id="service_rate" class="border border-gray-300 rounded text-sm" value="{{ $setting->service_rate }}" required autofocus />
+                        @error('service_rate')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                </div>
                 <div class="col-span-12 flex justify-end">
                     <button type="submit" class="transition duration-300 ease-in-out bg-blue-500 text-white rounded px-4 py-2">
                         Simpan
