@@ -8,6 +8,8 @@
         </a>
     </div>
 
+    <x-alerts/>
+
     <div class="bg-white p-6 rounded border border-gray-300">
         {{ $dataTable->table() }}
     </div>
