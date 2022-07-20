@@ -116,7 +116,7 @@
                     <h5 class="text-xl tracking-wide font-semibold mb-2">
                         Detail Produk
                     </h5>
-                    <div class="porange mb-8">
+                    <div class="prose mb-8">
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, tenetur obcaecati? Fuga, fugit. Eos natus et corporis cumque molestiae perferendis eligendi atque ex, sit ipsam autem praesentium porro in aspernatur.</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nihil amet quia repellat, dolorum nam facere animi est omnis sint incidunt rem beatae quaerat nemo odio quam deserunt? Eligendi, nobis!</p>
                         <ol>

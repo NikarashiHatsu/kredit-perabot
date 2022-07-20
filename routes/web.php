@@ -18,8 +18,8 @@ Route::view('/product/{slug}', 'show')->name('show');
 Route::view('/search', 'search')->name('search');
 Route::view('/category/{category}', 'search')->name('category');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
+    Route::view('/', 'dashboard.index')->name('dashboard.index');
+});
 
 require __DIR__.'/auth.php';
