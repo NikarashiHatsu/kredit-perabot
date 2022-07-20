@@ -42,7 +42,13 @@
                 </div>
             </div>
             <div class="text-gray-500 text-sm border-t py-4 flex flex-col">
-                <a href="{{ route('dashboard.index') }}" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100" @class(['border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.index')])>
+                <a
+                    href="{{ route('dashboard.index') }}"
+                    @class([
+                        'border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.index'),
+                        'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
+                    ])
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
@@ -57,7 +63,13 @@
                 <a href="javascript:void(0)" class="mb-2 mt-4 pl-5 uppercase text-xs tracking-wider font-bold text-gray-400">
                     Data Master
                 </a>
-                <a href="{{ route('dashboard.category.index') }}" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100" @class(['border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.category.index')])>
+                <a
+                    href="{{ route('dashboard.category.index') }}"
+                    @class([
+                        'border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.category.*'),
+                        'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
+                    ])
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M4 4h6v6h-6z"></path>
@@ -69,7 +81,13 @@
                         Kategori
                     </span>
                 </a>
-                <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100">
+                <a
+                    href="{{ route('dashboard.subcategory.index') }}"
+                    @class([
+                        'border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.subcategory.*'),
+                        'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
+                    ])
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category-2" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M14 4h6v6h-6z"></path>

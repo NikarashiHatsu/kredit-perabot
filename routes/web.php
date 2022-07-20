@@ -21,6 +21,7 @@ Route::view('/category/{category}', 'search')->name('category');
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
     Route::view('/', 'dashboard.index')->name('index');
     Route::resource('category', \App\Http\Controllers\CategoryController::class)->except('show');
+    Route::resource('subcategory', \App\Http\Controllers\SubcategoryController::class)->except('show');
 });
 
 require __DIR__.'/auth.php';
