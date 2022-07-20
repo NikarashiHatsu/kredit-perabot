@@ -141,7 +141,7 @@
                     </span>
                 </a>
                 <a
-                    href="javascript:void(0)"
+                    href="{{ route('dashboard.admin.index') }}"
                     @class([
                         'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.admin.*'),
                         'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'

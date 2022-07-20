@@ -26,6 +26,9 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
     Route::resource('creditor', \App\Http\Controllers\UserController::class)->except('show')->parameters([
         'creditor' => 'user',
     ]);
+    Route::resource('admin', \App\Http\Controllers\AdminController::class)->except('show')->parameters([
+        'admin' => 'user',
+    ]);
 });
 
 require __DIR__.'/auth.php';
