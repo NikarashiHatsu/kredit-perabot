@@ -40,6 +40,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
     Route::resource('setting', \App\Http\Controllers\SettingController::class)->only(['index', 'update'])->parameters([
         'setting' => 'user',
     ]);
+    Route::resource('application-setting', \App\Http\Controllers\ApplicationSettingController::class)->only(['index', 'update']);
 });
 
 require __DIR__.'/auth.php';

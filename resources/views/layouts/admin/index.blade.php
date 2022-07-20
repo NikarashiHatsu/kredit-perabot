@@ -205,8 +205,14 @@
                     Pengaturan
                 </a>
                 @if (in_array(auth()->user()->role, ['super_admin']))
-                    <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <a
+                        href="{{ route('dashboard.application-setting.index') }}"
+                        @class([
+                            'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.application-setting.index'),
+                            'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
+                        ])
+                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <rect x="3" y="5" width="18" height="14" rx="2"></rect>
                             <path d="M6 8h.01"></path>
