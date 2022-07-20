@@ -4,7 +4,7 @@
             Kembali
         </a>
         <h5 class="text-xl font-bold">
-            Edit Kategori
+            Edit Subkategori
         </h5>
     </div>
 
