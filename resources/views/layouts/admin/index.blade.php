@@ -6,6 +6,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Laravel') }}</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.css"/>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased bg-gray-100 flex">
@@ -40,7 +42,7 @@
                 </div>
             </div>
             <div class="text-gray-500 text-sm border-t py-4 flex flex-col">
-                <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-blue-500 pl-4 py-3 hover:bg-blue-100">
+                <a href="{{ route('dashboard.index') }}" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100" @class(['border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.index')])>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
@@ -55,7 +57,7 @@
                 <a href="javascript:void(0)" class="mb-2 mt-4 pl-5 uppercase text-xs tracking-wider font-bold text-gray-400">
                     Data Master
                 </a>
-                <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100">
+                <a href="{{ route('dashboard.category.index') }}" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100" @class(['border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.category.index')])>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M4 4h6v6h-6z"></path>
@@ -199,4 +201,8 @@
             </div>
         </main>
     </body>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
+    {{ $scripts ?? "" }}
 </html>
