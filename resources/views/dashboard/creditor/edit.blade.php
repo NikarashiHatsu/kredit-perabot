@@ -131,8 +131,6 @@
                         <label for="role" class="mb-2">Peran <span class="text-red-500">*</span></label>
                         <select name="role" id="role" class="border border-gray-300 rounded text-sm" required>
                             <option {{ $user->role == "user" ? "selected" : "" }} value="user">Kreditor</option>
-                            <option {{ $user->role == "admin" ? "selected" : "" }} value="admin">Admin Web</option>
-                            <option {{ $user->role == "super_admin" ? "selected" : "" }} value="super_admin">Super Admin</option>
                         </select>
                         @error('role')
                             <p class="text-xs text-red-500 mt-2 italic">
