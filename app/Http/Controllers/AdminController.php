@@ -6,6 +6,7 @@ use App\DataTables\AdminDataTable;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -76,7 +77,7 @@ class AdminController extends Controller
                     'password' => ['required', 'string', 'min:8', 'confirmed'],
                 ]);
 
-                $user->password = bcrypt($request->password);
+                $user->password = Hash::make($request->password);
                 $user->save();
             }
         } catch (\Throwable $th) {

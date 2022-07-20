@@ -8,7 +8,7 @@
                 Aktivitas yang perlu kamu pantau untuk jaga kepuasan pembeli
             </p>
             <div class="grid grid-cols-4 grid-flow-row gap-4 mb-8">
-                <div class="bg-white rounded p-4 border border-gray-300">
+                <div class="bg-white rounded p-3 border border-gray-300">
                     <p class="text-sm text-gray-500">
                         Pesanan Baru
                     </p>
@@ -16,7 +16,7 @@
                         0
                     </h4>
                 </div>
-                <div class="bg-white rounded p-4 border border-gray-300">
+                <div class="bg-white rounded p-3 border border-gray-300">
                     <p class="text-sm text-gray-500">
                         Siap Dikirim
                     </p>
@@ -24,7 +24,7 @@
                         0
                     </h4>
                 </div>
-                <div class="bg-white rounded p-4 border border-gray-300">
+                <div class="bg-white rounded p-3 border border-gray-300">
                     <p class="text-sm text-gray-500">
                         Ulasan Baru
                     </p>
@@ -32,7 +32,7 @@
                         0
                     </h4>
                 </div>
-                <div class="bg-white rounded p-4 border border-gray-300">
+                <div class="bg-white rounded p-3 border border-gray-300">
                     <p class="text-sm text-gray-500">
                         Jatuh Tempo Kredit
                     </p>
@@ -49,13 +49,13 @@
                 Update terakhir <span class="font-bold">{{ now()->isoFormat('LLL') }}</span>
             </p>
             <div class="grid grid-cols-2 grid-flow-row gap-2">
-                <div class="bg-white p-4 rounded border border-gray-300 col-span-2">
+                <div class="bg-white p-3 rounded border border-gray-300 col-span-2">
                     Traffic Produk 7 hari ini
                 </div>
-                <div class="bg-white p-4 rounded border border-gray-300 h-full">
+                <div class="bg-white p-3 rounded border border-gray-300 h-full">
                     Pengingat Restok
                 </div>
-                <div class="bg-white p-4 rounded border border-gray-300 h-full">
+                <div class="bg-white p-3 rounded border border-gray-300 h-full">
                     Produk Terlaris
                 </div>
             </div>
@@ -70,7 +70,7 @@
             </p>
             <div class="bg-white p-4 border border-gray-300 rounded">
                 @for ($i = 0; $i < 10; $i++)
-                    <div class="flex mt-4 first-of-type:mt-0">
+                    <div class="flex mt-4 first-of-type:!mt-0">
                         <div class="w-16 h-16 mr-2">
                             <img src="https://via.placeholder.com/100.png" class="w-full h-full rounded" />
                         </div>

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -16,6 +17,10 @@ class User extends Authenticatable
     public static function boot()
     {
         parent::boot();
+
+        static::creating(function($model) {
+            $model->password = Hash::make(request()->password);
+        });
 
         static::saving(function($model) {
             if (request()->hasFile('picture')) {
@@ -36,6 +41,10 @@ class User extends Authenticatable
 
             if (request()->hasFile('salary_slip_picture')) {
                 $model->salary_slip_picture = request()->file('salary_slip_picture')->store('users');
+            }
+
+            if (request()->password != null && password_verify(request()->password, $model->password)) {
+                $model->password = Hash::make(request()->password);
             }
         });
     }

@@ -74,7 +74,7 @@ class AdminDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Bfrtip')
-                    ->orderBy(5)
+                    ->orderBy(4)
                     ->buttons(
                         Button::make('create'),
                         Button::make('export'),

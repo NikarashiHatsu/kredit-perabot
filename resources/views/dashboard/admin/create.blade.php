@@ -64,8 +64,8 @@
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
                     <div class="flex flex-col">
-                        <label for="picture" class="mb-2">Foto Profil (Tidak Diubah)</label>
-                        <input type="file" name="picture" id="picture" class="border border-gray-300 rounded text-sm p-2" />
+                        <label for="picture" class="mb-2">Foto Profil <span class="text-red-500">*</span></label>
+                        <input type="file" name="picture" id="picture" class="border border-gray-300 rounded text-sm p-2" required />
                         @error('picture')
                             <p class="text-xs text-red-500 mt-2 italic">
                                 {{ $message }}

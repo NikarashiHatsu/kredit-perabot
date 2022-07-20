@@ -6,6 +6,7 @@ use App\DataTables\CreditorDataTable;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -76,7 +77,7 @@ class UserController extends Controller
                     'password' => ['required', 'string', 'min:8', 'confirmed'],
                 ]);
 
-                $user->password = bcrypt($request->password);
+                $user->password = Hash::make($request->password);
                 $user->save();
             }
         } catch (\Throwable $th) {
