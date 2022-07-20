@@ -99,7 +99,13 @@
                         Sub-Kategori
                     </span>
                 </a>
-                <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100">
+                <a
+                    href="{{ route('dashboard.product.index') }}"
+                    @class([
+                        'border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.product.*'),
+                        'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
+                    ])
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-package" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline>
@@ -222,5 +228,6 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor5/34.2.0/ckeditor.min.js" integrity="sha512-rpy6z/f66611MGAFKrP+PE8q9TFUtG5otj76nLKLK/WYesZL1xgVeFzf37jyUWM0PHaF5vJxfrwIYjpG8Mwjag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{ $scripts ?? "" }}
 </html>

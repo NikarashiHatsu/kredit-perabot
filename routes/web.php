@@ -22,6 +22,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
     Route::view('/', 'dashboard.index')->name('index');
     Route::resource('category', \App\Http\Controllers\CategoryController::class)->except('show');
     Route::resource('subcategory', \App\Http\Controllers\SubcategoryController::class)->except('show');
+    Route::resource('product', \App\Http\Controllers\ProductController::class)->except('show');
 });
 
 require __DIR__.'/auth.php';
