@@ -20,14 +20,25 @@ Route::view('/category/{category}', 'search')->name('category');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
     Route::view('/', 'dashboard.index')->name('index');
+
+    // Master Data
     Route::resource('category', \App\Http\Controllers\CategoryController::class)->except('show');
     Route::resource('subcategory', \App\Http\Controllers\SubcategoryController::class)->except('show');
     Route::resource('product', \App\Http\Controllers\ProductController::class)->except('show');
     Route::resource('creditor', \App\Http\Controllers\UserController::class)->except('show')->parameters([
         'creditor' => 'user',
     ]);
+
+    // User Data
     Route::resource('admin', \App\Http\Controllers\AdminController::class)->except('show')->parameters([
         'admin' => 'user',
+    ]);
+
+    // Statistics
+
+    // Settings
+    Route::resource('setting', \App\Http\Controllers\SettingController::class)->only(['index', 'update'])->parameters([
+        'setting' => 'user',
     ]);
 });
 
