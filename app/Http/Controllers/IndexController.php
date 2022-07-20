@@ -25,7 +25,7 @@ class IndexController extends Controller
 
     public function search()
     {
-        return view('category');
+        return view('search');
     }
 
     public function product()
