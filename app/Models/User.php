@@ -51,6 +51,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'picture',
+        'role',
         'place_of_birth',
         'date_of_birth',
         'marriage_status',

@@ -120,6 +120,21 @@
                         @enderror
                     </div>
                 </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
+                        <label for="role" class="mb-2">Peran <span class="text-red-500">*</span></label>
+                        <select name="role" id="role" class="border border-gray-300 rounded text-sm" required>
+                            <option {{ old('role') == "user" ? "selected" : "" }} value="user">Kreditor</option>
+                            <option {{ old('role') == "admin" ? "selected" : "" }} value="admin">Admin Web</option>
+                            <option {{ old('role') == "super_admin" ? "selected" : "" }} value="admin">Super Admin</option>
+                        </select>
+                        @error('role')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                </div>
                 <div class="col-span-12">
                     <div class="flex flex-col">
                         <label for="address" class="mb-2">Alamat <span class="text-red-500">*</span></label>

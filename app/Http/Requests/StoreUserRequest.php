@@ -28,6 +28,7 @@ class StoreUserRequest extends FormRequest
             'email' => ['required', 'email'],
             'phone' => ['required', 'string'],
             'picture' => ['required', 'image', 'max:4096'],
+            'role' => ['required', 'string'],
             'place_of_birth' => ['required', 'string'],
             'date_of_birth' => ['required', 'date_format:Y-m-d'],
             'marriage_status' => ['required', 'string'],

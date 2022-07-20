@@ -53,7 +53,7 @@ class CreditorDataTable extends DataTable
             })
             ->editColumn('role', function($user) {
                 return "
-                    <div class='bg-blue-500 text-xs text-white px-2 py-1 rounded font-bold uppercase'>
+                    <div class='bg-blue-500 text-xs text-center text-white px-2 py-1 rounded font-bold uppercase'>
                         Kreditor
                     </div>
                 ";

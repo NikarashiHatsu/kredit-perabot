@@ -28,6 +28,7 @@ class UpdateUserRequest extends FormRequest
             'email' => ['required', 'email'],
             'phone' => ['nullable', 'string'],
             'picture' => ['nullable', 'image', 'max:4096'],
+            'role' => ['required', 'string'],
             'place_of_birth' => ['nullable', 'string'],
             'date_of_birth' => ['nullable', 'date_format:Y-m-d'],
             'marriage_status' => ['nullable', 'string'],
