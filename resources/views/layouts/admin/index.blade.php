@@ -29,7 +29,7 @@
                         Kreditor Aktif
                     </span>
                     <span class="font-bold text-gray-700">
-                        24 orang
+                        {{ $creditors }} orang
                     </span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -37,7 +37,7 @@
                         Produk Aktif
                     </span>
                     <span class="font-bold text-gray-700">
-                        727 Produk
+                        {{ $products }} Produk
                     </span>
                 </div>
             </div>

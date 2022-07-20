@@ -124,4 +124,14 @@ class User extends Authenticatable
             get: fn ($value) => $value != null ? Storage::url($value) : null,
         );
     }
+
+    public function scopeCreditor($query)
+    {
+        return $query->where('role', 'user');
+    }
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('role', 'admin');
+    }
 }
