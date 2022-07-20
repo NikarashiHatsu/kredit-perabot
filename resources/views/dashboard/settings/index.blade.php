@@ -40,6 +40,53 @@
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
                     <div class="flex flex-col">
+                        <label for="phone" class="mb-2">No. HP</label>
+                        <input type="number" name="phone" id="phone" class="border border-gray-300 rounded text-sm" value="{{ auth()->user()->phone }}" />
+                        @error('phone')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
+                        <label for="place_of_birth" class="mb-2">Tempat Lahir</label>
+                        <input type="text" name="place_of_birth" id="place_of_birth" class="border border-gray-300 rounded text-sm" value="{{ auth()->user()->place_of_birth }}" />
+                        @error('place_of_birth')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
+                        <label for="date_of_birth" class="mb-2">Tanggal Lahir</label>
+                        <input type="date" name="date_of_birth" id="date_of_birth" class="border border-gray-300 rounded text-sm" value="{{ auth()->user()->date_of_birth }}" />
+                        @error('date_of_birth')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
+                        <label for="marriage_status" class="mb-2">Status Pernikahan</label>
+                        <select name="marriage_status" id="marriage_status" class="border border-gray-300 rounded text-sm">
+                            <option {{ auth()->user()->marriage_status == "Belum Menikah" ? "selected" : "" }} value="Belum Menikah">Belum Menikah</option>
+                            <option {{ auth()->user()->marriage_status == "Sudah Menikah" ? "selected" : "" }} value="Sudah Menikah">Sudah Menikah</option>
+                        </select>
+                        @error('marriage_status')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
                         <label for="password" class="mb-2">Kata Sandi (Tidak diubah)</label>
                         <input type="password" name="password" id="password" class="border border-gray-300 rounded text-sm" />
                         @error('password')
@@ -72,6 +119,81 @@
                         @if (auth()->user()->picture != null)
                             <a href="{{ auth()->user()->picture }}" target="_blank">
                                 <img class="w-32 h-32 border border-gray-300 object-cover rounded mt-4" src="{{ auth()->user()->picture }}" />
+                            </a>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="flex flex-col">
+                        <label for="address" class="mb-2">Alamat</label>
+                        <textarea name="address" id="" cols="30" rows="10" class="border border-gray-300 rounded text-sm">{{ auth()->user()->address }}</textarea>
+                        @error('address')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
+                        <label for="identity_card_picture" class="mb-2">KTP (Tidak Diubah)</label>
+                        <input type="file" name="identity_card_picture" id="identity_card_picture" class="border border-gray-300 rounded text-sm p-2" />
+                        @error('identity_card_picture')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                        @if (auth()->user()->identity_card_picture != null)
+                            <a href="{{ auth()->user()->identity_card_picture }}" target="_blank">
+                                <img class="w-32 h-32 border border-gray-300 object-cover rounded mt-4" src="{{ auth()->user()->identity_card_picture }}" />
+                            </a>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
+                        <label for="family_identity_card_picture" class="mb-2">KK (Tidak Diubah)</label>
+                        <input type="file" name="family_identity_card_picture" id="family_identity_card_picture" class="border border-gray-300 rounded text-sm p-2" />
+                        @error('family_identity_card_picture')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                        @if (auth()->user()->family_identity_card_picture != null)
+                            <a href="{{ auth()->user()->family_identity_card_picture }}" target="_blank">
+                                <img class="w-32 h-32 border border-gray-300 object-cover rounded mt-4" src="{{ auth()->user()->family_identity_card_picture }}" />
+                            </a>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
+                        <label for="tax_identity_picture" class="mb-2">NPWP (Tidak Diubah)</label>
+                        <input type="file" name="tax_identity_picture" id="tax_identity_picture" class="border border-gray-300 rounded text-sm p-2" />
+                        @error('tax_identity_picture')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                        @if (auth()->user()->tax_identity_picture != null)
+                            <a href="{{ auth()->user()->tax_identity_picture }}" target="_blank">
+                                <img class="w-32 h-32 border border-gray-300 object-cover rounded mt-4" src="{{ auth()->user()->tax_identity_picture }}" />
+                            </a>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+                    <div class="flex flex-col">
+                        <label for="salary_slip_picture" class="mb-2">Slip Gaji (Tidak Diubah)</label>
+                        <input type="file" name="salary_slip_picture" id="salary_slip_picture" class="border border-gray-300 rounded text-sm p-2" />
+                        @error('salary_slip_picture')
+                            <p class="text-xs text-red-500 mt-2 italic">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                        @if (auth()->user()->salary_slip_picture != null)
+                            <a href="{{ auth()->user()->salary_slip_picture }}" target="_blank">
+                                <img class="w-32 h-32 border border-gray-300 object-cover rounded mt-4" src="{{ auth()->user()->salary_slip_picture }}" />
                             </a>
                         @endif
                     </div>

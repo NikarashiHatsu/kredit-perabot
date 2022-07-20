@@ -30,14 +30,32 @@ class SettingController extends Controller
         $request->validate([
             'name' => ['required', 'string'],
             'email' => ['required', 'email'],
+            'phone' => ['nullable', 'string'],
             'picture' => ['nullable', 'image', 'max:4096'],
+            'place_of_birth' => ['nullable', 'string'],
+            'date_of_birth' => ['nullable', 'date_format:Y-m-d'],
+            'marriage_status' => ['nullable', 'string'],
+            'address' => ['nullable', 'string'],
+            'identity_card_picture' => ['nullable', 'image', 'max:4096'],
+            'family_identity_card_picture' => ['nullable', 'image', 'max:4096'],
+            'tax_identity_picture' => ['nullable', 'image', 'max:4096'],
+            'salary_slip_picture' => ['nullable', 'image', 'max:4096'],
         ]);
 
         try {
             auth()->user()->update($request->only([
                 'name',
                 'email',
+                'phone',
                 'picture',
+                'place_of_birth',
+                'date_of_birth',
+                'marriage_status',
+                'address',
+                'identity_card_picture',
+                'family_identity_card_picture',
+                'tax_identity_picture',
+                'salary_slip_picture',
             ]));
 
             if ($request->password != null) {
