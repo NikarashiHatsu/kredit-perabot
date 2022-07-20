@@ -45,7 +45,7 @@
                 <a
                     href="{{ route('dashboard.index') }}"
                     @class([
-                        'border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.index'),
+                        'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.index'),
                         'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
                     ])
                 >
@@ -66,7 +66,7 @@
                 <a
                     href="{{ route('dashboard.category.index') }}"
                     @class([
-                        'border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.category.*'),
+                        'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.category.*'),
                         'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
                     ])
                 >
@@ -84,7 +84,7 @@
                 <a
                     href="{{ route('dashboard.subcategory.index') }}"
                     @class([
-                        'border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.subcategory.*'),
+                        'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.subcategory.*'),
                         'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
                     ])
                 >
@@ -102,7 +102,7 @@
                 <a
                     href="{{ route('dashboard.product.index') }}"
                     @class([
-                        'border-l-blue-500 bg-blue-100' => request()->routeIs('dashboard.product.*'),
+                        'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.product.*'),
                         'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
                     ])
                 >
@@ -118,7 +118,17 @@
                         Produk
                     </span>
                 </a>
-                <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100">
+
+                <a href="javascript:void(0)" class="mb-2 mt-4 pl-5 uppercase text-xs tracking-wider font-bold text-gray-400">
+                    Data Pengguna
+                </a>
+                <a
+                    href="{{ route('dashboard.creditor.index') }}"
+                    @class([
+                        'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.creditor.*'),
+                        'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
+                    ])
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <circle cx="9" cy="7" r="4"></circle>
@@ -128,6 +138,23 @@
                     </svg>
                     <span class="ml-2 font-bold">
                         Kreditor
+                    </span>
+                </a>
+                <a
+                    href="javascript:void(0)"
+                    @class([
+                        'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.admin.*'),
+                        'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
+                    ])
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cardboards" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M3 8v8.5a2.5 2.5 0 0 0 2.5 2.5h1.06a3 3 0 0 0 2.34 -1.13l1.54 -1.92a2 2 0 0 1 3.12 0l1.54 1.92a3 3 0 0 0 2.34 1.13h1.06a2.5 2.5 0 0 0 2.5 -2.5v-8.5a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2z"></path>
+                        <circle cx="8" cy="12" r="1"></circle>
+                        <circle cx="16" cy="12" r="1"></circle>
+                    </svg>
+                    <span class="ml-2 font-bold">
+                        Admin Web
                     </span>
                 </a>
 

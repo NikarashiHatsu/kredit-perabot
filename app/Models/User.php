@@ -2,14 +2,43 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function($model) {
+            if (request()->hasFile('picture')) {
+                $model->picture = request()->file('picture')->store('users');
+            }
+
+            if (request()->hasFile('identity_card_picture')) {
+                $model->identity_card_picture = request()->file('identity_card_picture')->store('users');
+            }
+
+            if (request()->hasFile('family_identity_card_picture')) {
+                $model->family_identity_card_picture = request()->file('family_identity_card_picture')->store('users');
+            }
+
+            if (request()->hasFile('tax_identity_picture')) {
+                $model->tax_identity_picture = request()->file('tax_identity_picture')->store('users');
+            }
+
+            if (request()->hasFile('salary_slip_picture')) {
+                $model->salary_slip_picture = request()->file('salary_slip_picture')->store('users');
+            }
+        });
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +49,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'picture',
+        'place_of_birth',
+        'date_of_birth',
+        'marriage_status',
+        'address',
+        'identity_card_picture',
+        'family_identity_card_picture',
+        'tax_identity_picture',
+        'salary_slip_picture',
     ];
 
     /**
@@ -40,4 +79,39 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function picture(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value != null ? Storage::url($value) : null,
+        );
+    }
+
+    protected function identityCardPicture(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value != null ? Storage::url($value) : null,
+        );
+    }
+
+    protected function familyIdentityCardPicture(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value != null ? Storage::url($value) : null,
+        );
+    }
+
+    protected function taxIdentityPicture(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value != null ? Storage::url($value) : null,
+        );
+    }
+
+    protected function salarySlipPicture(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value != null ? Storage::url($value) : null,
+        );
+    }
 }

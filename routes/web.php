@@ -23,6 +23,9 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
     Route::resource('category', \App\Http\Controllers\CategoryController::class)->except('show');
     Route::resource('subcategory', \App\Http\Controllers\SubcategoryController::class)->except('show');
     Route::resource('product', \App\Http\Controllers\ProductController::class)->except('show');
+    Route::resource('creditor', \App\Http\Controllers\UserController::class)->except('show')->parameters([
+        'creditor' => 'user',
+    ]);
 });
 
 require __DIR__.'/auth.php';
