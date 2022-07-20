@@ -109,7 +109,7 @@
         <div class="grid grid-cols-12 grid-flow-row gap-6">
             <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
                 <h4 class="text-xl font-bold mb-4">
-                    Cicilan 2,5%
+                    Cicilan {{ str_replace('.', ',', $interest_rate) }}%
                 </h4>
                 <ol class="grid grid-cols-4 grid-flow-row gap-2">
                     <li><img class="w-full h-8" src="{{ asset('images/cicilan/logo-bni.png') }}" /></li>

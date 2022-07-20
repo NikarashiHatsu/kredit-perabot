@@ -13,7 +13,7 @@
 
         <div class="font-sans text-gray-900 antialiased">
             <div class="max-w-7xl mx-auto p-4 py-6">
-                {{ $slot }}
+                {{ $slot, $interest_rate }}
             </div>
         </div>
 

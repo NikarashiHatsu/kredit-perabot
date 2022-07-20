@@ -17,11 +17,13 @@ return new class extends Migration
         Schema::create('application_settings', function (Blueprint $table) {
             $table->id();
             $table->float('interest_rate');
+            $table->float('service_rate');
             $table->timestamps();
         });
 
         ApplicationSetting::create([
             'interest_rate' => 2.5,
+            'service_rate' => 1.75,
         ]);
     }
 

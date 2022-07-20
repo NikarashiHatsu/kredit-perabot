@@ -11,5 +11,6 @@ class ApplicationSetting extends Model
 
     protected $fillable = [
         'interest_rate',
+        'service_rate',
     ];
 }

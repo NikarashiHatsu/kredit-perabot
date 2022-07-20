@@ -4,7 +4,9 @@
             price: {{ rand(250000, 10000000) }},
             modalOpened: false,
             quantity: 1,
-            formatter: new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' })
+            formatter: new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }),
+            interestRate: {{ $interest_rate }},
+            serviceRate: {{ $service_rate }},
         }"
         class="flex flex-col"
     >
@@ -341,7 +343,7 @@
             <div class="flex items-center mb-2">
                 <x-phosphor-info-fill class="w-5 h-5 opacity-50"/>
                 <span class="ml-2">
-                    Pilih cicilan 2.5% dengan Kartu Kredit
+                    Pilih cicilan {{ str_replace('.', ',', $interest_rate) }}% dengan Kartu Kredit
                 </span>
             </div>
 
@@ -435,7 +437,7 @@
             <div class="flex items-center mb-2">
                 <x-phosphor-info-fill class="w-5 h-5 opacity-50"/>
                 <span class="ml-2">
-                    Pilih cicilan 2.5% tanpa kartu
+                    Pilih cicilan {{ str_replace('.', ',', $interest_rate) }}% tanpa kartu
                 </span>
             </div>
 
@@ -471,10 +473,10 @@
             <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 grid-flow-row gap-2 mb-6">
                 <a
                     href="javascript:void(0)"
-                    x-on:click="price > 10000000 ? duration = 12 : null"
+                    x-on:click="(price * quantity) > 10000000 ? duration = 12 : null"
                     x-bind:class="{
                         'border-orange-500': duration == 12,
-                        'opacity-20': price < 10000000,
+                        'opacity-20': (price * quantity) < 10000000,
                     }"
                     class="w-full p-2 text-sm border rounded-xl text-center"
                 >
@@ -482,10 +484,10 @@
                 </a>
                 <a
                     href="javascript:void(0)"
-                    x-on:click="price > 5000000 ? duration = 9 : null"
+                    x-on:click="(price * quantity) > 5000000 ? duration = 9 : null"
                     x-bind:class="{
                         'border-orange-500': duration == 9,
-                        'opacity-20': price < 5000000,
+                        'opacity-20': (price * quantity) < 5000000,
                     }"
                     class="w-full p-2 text-sm border rounded-xl text-center"
                 >
@@ -493,10 +495,10 @@
                 </a>
                 <a
                     href="javascript:void(0)"
-                    x-on:click="price > 3000000 ? duration = 6 : null"
+                    x-on:click="(price * quantity) > 3000000 ? duration = 6 : null"
                     x-bind:class="{
                         'border-orange-500': duration == 6,
-                        'opacity-20': price < 3000000,
+                        'opacity-20': (price * quantity) < 3000000,
                     }"
                     class="w-full p-2 text-sm border rounded-xl text-center"
                 >
@@ -504,10 +506,10 @@
                 </a>
                 <a
                     href="javascript:void(0)"
-                    x-on:click="price > 1000000 ? duration = 3 : null"
+                    x-on:click="(price * quantity) > 1000000 ? duration = 3 : null"
                     x-bind:class="{
                         'border-orange-500': duration == 3,
-                        'opacity-20': price < 1000000,
+                        'opacity-20': (price * quantity) < 1000000,
                     }"
                     class="w-full p-2 text-sm border rounded-xl text-center"
                 >
@@ -530,26 +532,34 @@
             </p>
             <p class="flex justify-between mb-2">
                 <span>
-                    Bunga (2,5%)
+                    Bunga ({{ str_replace('.', ',', $interest_rate) }}%)
                 </span>
-                <span x-html="formatter.format(price * (2.5/100) * duration)"></span>
+                <span x-html="formatter.format((price * quantity) * (interestRate/100) * duration)"></span>
             </p>
             <p class="flex justify-between mb-4">
                 <span>
-                    Biaya Layanan (1,75%)
+                    Biaya Layanan ({{ str_replace('.', ',', $service_rate) }}%)
                 </span>
-                <span x-html="formatter.format(price * (1.75/100))"></span>
+                <span x-html="formatter.format((price * quantity) * (serviceRate/100))"></span>
             </p>
             <div class="px-4 py-2 rounded bg-gray-200 flex justify-between mb-2">
                 <span>
                     Cicilan <span x-html="duration"></span>x
                 </span>
                 <div class="flex">
-                    <span x-html="formatter.format((price / (duration != 0 ? duration : 1)) + (price * (duration != 0 ? 2.5/100 : 0)) + (price * (1.75/100)))" class="font-bold"></span>/bulan
+                    <span x-html="formatter.format(((price * quantity) / (duration != 0 ? duration : 1)) + ((price * quantity) * (duration != 0 ? interestRate/100 : 0)) + ((price * quantity) * (serviceRate/100)))" class="font-bold"></span>/bulan
                 </div>
             </div>
-            <div class="flex justify-end text-sm italic">
-                Cicilan per-bulan = ((Harga / Durasi Cicilan) * 2,5%) + Biaya Layanan
+            <div class="flex flex-col items-start text-sm italic">
+                <p class="mb-1">
+                    * Bunga = (Harga * {{ str_replace('.', ',', $interest_rate) }}%)) * durasi bulan
+                </p>
+                <p class="mb-1">
+                    * Biaya Layanan = Harga Barang * {{ str_replace('.', ',', $service_rate) }}%)
+                </p>
+                <p class="mb-1">
+                    * Cicilan per-bulan = ((Harga / Durasi Cicilan) * {{ str_replace('.', ',', $interest_rate) }}%) + Biaya Layanan
+                </p>
             </div>
         </x-modal>
     </div>
