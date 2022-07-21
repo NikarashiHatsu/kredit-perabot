@@ -17,7 +17,7 @@ Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('
 Route::get('/product/{product:slug}', [\App\Http\Controllers\IndexController::class, 'show'])->name('show');
 Route::get('/search', [\App\Http\Controllers\IndexController::class, 'search'])->name('search');
 Route::get('/category/{category}', [\App\Http\Controllers\IndexController::class, 'category'])->name('category');
-Route::post('/checkout', function() { return auth()->user()->carts; })->name('checkout');
+Route::resource('checkout', \App\Http\Controllers\CheckoutController::class)->only(['store', 'index']);
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
     Route::view('/', 'dashboard.index')->name('index');

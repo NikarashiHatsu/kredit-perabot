@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
-class Cart extends Model
+class Checkout extends Model
 {
     use HasFactory;
 
@@ -29,10 +31,23 @@ class Cart extends Model
         return $this->belongsTo(Product::class);
     }
 
+    protected function paymentReceipt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value != null ? Storage::url($value) : null,
+        );
+    }
+
     protected $fillable = [
         'user_id',
         'product_id',
         'quantity',
+        'price',
         'duration',
+        'subtotal',
+        'installment',
+        'interest_rate',
+        'service_rate',
+        'payment_receipt',
     ];
 }

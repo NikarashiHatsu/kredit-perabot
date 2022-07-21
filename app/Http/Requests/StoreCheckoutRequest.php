@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCartRequest extends FormRequest
+class StoreCheckoutRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class UpdateCartRequest extends FormRequest
     public function rules()
     {
         return [
-            'quantity' => ['required', 'integer'],
-            'duration' => ['nullable', 'integer'],
+            'payment_receipt' => ['required', 'image', 'max:4096'],
         ];
     }
 }

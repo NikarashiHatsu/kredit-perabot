@@ -37,10 +37,10 @@ class CartController extends Controller
         try {
             $cart->update($request->validated());
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Gagal memperbarui kuantitas: ' . $th->getMessage());
+            return redirect()->back()->with('error', 'Gagal memperbarui keranjang: ' . $th->getMessage());
         }
 
-        return redirect()->back()->with('success', 'Berhasil memperbarui kuantitas');
+        return redirect()->back()->with('success', 'Berhasil memperbarui keranjang');
     }
 
     /**

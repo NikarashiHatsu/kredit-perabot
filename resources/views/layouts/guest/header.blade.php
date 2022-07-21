@@ -95,12 +95,11 @@
                             </div>
                         </div>
                     @endforeach
-                    <form action="{{ route('checkout') }}" method="post" class="mt-4">
-                        @csrf
-                        <button type="submit" class="border border-orange-500 text-orange-500 transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white text-xs w-full rounded py-1.5">
+                    <div class="flex flex-col mt-4">
+                        <a href="{{ route('checkout.index') }}" class="text-center border border-orange-500 text-orange-500 transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white text-xs w-full rounded py-1.5">
                             Checkout
-                        </button>
-                    </form>
+                        </a>
+                    </div>
                 </div>
             </div>
             <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full ml-0 md:ml-3">
