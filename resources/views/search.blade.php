@@ -2,7 +2,7 @@
     <div class="grid grid-cols-12 grid-flow-row gap-6">
         <div class="col-span-12 sm:col-span-5 md:col-span-4 lg:col-span-3">
             <div class="bg-orange-100 p-4 text-sm mb-6">
-                Menampilkan <b>{{ $productCount = rand(1, 48) }}</b> produk dalam <b>{{ str()->headline(request()->category) }}</b>
+                Menampilkan <b>{{ $products->count() }}</b> produk dalam <b>{{ str()->headline(request()->category) }}</b>
                 dengan kata kunci <b>{{ request()->get('query') }}</b>
             </div>
 
@@ -95,21 +95,22 @@
 
         <div class="col-span-12 sm:col-span-7 md:col-span-8 lg:col-span-9">
             <div class="bg-white p-4 border rounded">
-                <div class="grid grid-cols-4 grid-flow-row gap-4">
-                    @for ($i = 0; $i < $productCount; $i++)
-                        <a href="{{ route('show', $productName = str()->slug(fake()->productName)) }}" class="col-span-4 sm:col-span-2 lg:col-span-1 border border-gray-200 rounded">
+                <div class="grid grid-cols-4 grid-flow-row gap-4 mb-4">
+                    @foreach ($products as $product)
+                        <a href="{{ route('show', $product->slug) }}" class="col-span-4 sm:col-span-2 lg:col-span-1 border border-gray-200 rounded">
                             <div class="aspect-w-1 aspect-h-1">
-                                <img src="https://via.placeholder.com/300.png" alt="" class="w-full h-full rounded-t object-cover">
+                                <img src="{{ $product->picture_1 }}" alt="" class="w-full h-full rounded-t object-cover">
                             </div>
                             <div class="p-2">
                                 <div class="flex flex-col justify-between h-full">
                                     <p class="font-bold text-orange-500 tracking-wide">
-                                        Rp{{ number_format(rand(150000, 1000000), 0, '.', '.') }}
+                                        Rp{{ number_format($product->price, 0, '.', '.') }}
                                     </p>
                                     <p class="text-gray-600 text-sm mb-1">
-                                        {{ str()->headline($productName) }}
+                                        {{ $product->name }}
                                     </p>
                                     <p class="flex text-xs items-center mb-2">
+                                        {{-- TODO: Ulasan --}}
                                         <x-phosphor-star-fill class="w-4 h-4 text-yellow-400" />
                                         <span class="border-r border-gray-300 pr-2 mx-1">
                                             {{ rand(1, 5) }}
@@ -125,8 +126,10 @@
                                 </div>
                             </div>
                         </a>
-                    @endfor
+                    @endforeach
                 </div>
+
+                {{ $products->appends(request()->query())->links() }}
             </div>
         </div>
     </div>

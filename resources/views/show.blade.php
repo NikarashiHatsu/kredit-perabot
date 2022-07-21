@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div
         x-data="{
-            price: {{ rand(250000, 10000000) }},
+            price: {{ $product->price }},
             modalOpened: false,
             quantity: 1,
             formatter: new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }),
@@ -13,16 +13,27 @@
         <div class="grid grid-cols-12 grid-flow-row gap-6">
             <div class="col-span-12 sm:col-span-7 md:col-span-8">
                 <x-swiper>
-                    <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded" src="" /></div>
-                    <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded" src="" /></div>
-                    <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded" src="" /></div>
+                    <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded object-contain" src="{{ $product->picture_1 }}" /></div>
+                    @if ($product->picture_2)
+                        <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded object-contain" src="{{ $product->picture_2 }}" /></div>
+                    @endif
+                    @if ($product->picture_3)
+                        <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded object-contain" src="{{ $product->picture_3 }}" /></div>
+                    @endif
+                    @if ($product->picture_4)
+                        <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded object-contain" src="{{ $product->picture_4 }}" /></div>
+                    @endif
+                    @if ($product->picture_5)
+                        <div class="swiper-slide aspect-w-16 aspect-h-8"><img class="rounded object-contain" src="{{ $product->picture_5 }}" /></div>
+                    @endif
                 </x-swiper>
 
                 <div class="bg-white p-6 border rounded mt-6">
                     <h3 class="text-2xl font-bold tracking-wide text-gray-500 mb-2">
-                        {{ ucwords(str_replace('-', ' ', $slug)) }}
+                        {{ $product->name }}
                     </h3>
-                    <h6 class="text-lg tracking-wide flex items-center mb-6">
+                    {{-- TODO: Ulasan --}}
+                    {{-- <h6 class="text-lg tracking-wide flex items-center mb-6">
                         <span class="flex">
                             <x-phosphor-star-fill class="w-5 h-5 text-yellow-400" />
                             <x-phosphor-star-fill class="w-5 h-5 text-yellow-400" />
@@ -33,7 +44,7 @@
                         <span class="ml-4">
                             ({{ rand(1, 10) }}) Ulasan
                         </span>
-                    </h6>
+                    </h6> --}}
 
                     <h5 class="text-xl tracking-wide font-semibold mb-2">
                         Jenis Pengiriman yang Tersedia
@@ -119,48 +130,33 @@
                         Detail Produk
                     </h5>
                     <div class="prose mb-8">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, tenetur obcaecati? Fuga, fugit. Eos natus et corporis cumque molestiae perferendis eligendi atque ex, sit ipsam autem praesentium porro in aspernatur.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nihil amet quia repellat, dolorum nam facere animi est omnis sint incidunt rem beatae quaerat nemo odio quam deserunt? Eligendi, nobis!</p>
-                        <ol>
-                            <li>List A</li>
-                            <li>List B</li>
-                            <li>List C</li>
-                            <li>List D</li>
-                        </ol>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti voluptas molestiae debitis consectetur odit beatae excepturi quibusdam quas tempora eligendi similique expedita modi fuga sunt eius, eaque dignissimos? Doloremque, laborum!</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas distinctio aperiam sint blanditiis at beatae suscipit libero alias, cum iusto aspernatur commodi aliquam temporibus, repellendus sed atque animi. Repudiandae, fuga!</p>
-                        <ul>
-                            <li>Feature 1</li>
-                            <li>Feature 2</li>
-                            <li>Feature 3</li>
-                            <li>Feature 4</li>
-                        </ul>
+                        {!! $product->description !!}
                     </div>
                     <div class="grid grid-cols-3 grid-flow-row gap-4 mb-8">
                         <div class="col-span-3 sm:col-span-1">
                             <div class="border border-gray-300 rounded p-4 flex flex-col items-center justify-center h-full">
                                 <div class="bg-white w-12 h-12 border border-gray-400 rounded-full mb-2"></div>
                                 <p class="text-sm">Warna</p>
-                                <p class="text-sm font-bold">Putih</p>
+                                <p class="text-sm font-bold {{ $product->color }}"></p>
                             </div>
                         </div>
                         <div class="col-span-3 sm:col-span-1">
                             <div class="border border-gray-300 rounded p-4 flex flex-col items-center justify-center h-full">
                                 <x-phosphor-cube-thin class="w-12 h-12 text-gray-400" />
                                 <p class="text-sm">Dimensi Kemasan</p>
-                                <p class="text-sm font-bold">Panjang x Lebar x Tinggi cm</p>
+                                <p class="text-sm font-bold">{{ $product->length }}cm x {{ $product->width }}cm x {{ $product->height}}cm</p>
                             </div>
                         </div>
                         <div class="col-span-3 sm:col-span-1">
                             <div class="border border-gray-300 rounded p-4 flex flex-col items-center justify-center h-full">
                                 <x-phosphor-cube-thin class="w-12 h-12 text-gray-400" />
                                 <p class="text-sm">Berat</p>
-                                <p class="text-sm font-bold">0,17kg</p>
+                                <p class="text-sm font-bold">{{ number_format($product->weight / 1000, 2, ',') }}kg</p>
                             </div>
                         </div>
                     </div>
 
-                    <h5 class="text-xl tracking-wide font-semibold mb-4">
+                    {{-- <h5 class="text-xl tracking-wide font-semibold mb-4">
                         Ulasan
                     </h5>
                     <div class="w-full flex flex-col-reverse md:flex-row mb-4">
@@ -243,27 +239,123 @@
                         <button class="transition duration-300 ease-in-out bg-transparent hover:bg-orange-500 hover:text-white border border-orange-500 text-orange-500 w-full py-2 rounded">
                             Lihat Semua Ulasan
                         </button>
-                    </div>
+                    </div> --}}
 
                     <h5 class="text-xl tracking-wide font-semibold mb-2">
                         Produk yang Mungkin Anda Suka
                     </h5>
                     <div class="mb-8">
-                        TODO: Tampilin Slider Produk, Max 16 Produk (4 produk/slide)
+                        <div class="grid grid-cols-12 grid-flow-row gap-8">
+                            @foreach ($might_like_products as $product)
+                                <a href="{{ route('show', $product->slug) }}" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 border border-gray-200 rounded bg-white">
+                                    <div class="aspect-w-1 aspect-h-1">
+                                        <img src="{{ $product->picture_1 }}" alt="" class="w-full h-full rounded-t object-cover">
+                                    </div>
+                                    <div class="p-2">
+                                        <div class="flex flex-col justify-between h-full">
+                                            <p class="font-bold text-orange-500 tracking-wide">
+                                                Rp{{ number_format($product->price, 0, '.', '.') }}
+                                            </p>
+                                            <p class="text-gray-600 text-sm mb-1">
+                                                {{ $product->name }}
+                                            </p>
+                                            <p class="flex text-xs items-center mb-2">
+                                                {{-- TODO: Ulasan --}}
+                                                <x-phosphor-star-fill class="w-4 h-4 text-yellow-400" />
+                                                <span class="border-r border-gray-300 pr-2 mx-1">
+                                                    {{ rand(1, 5) }}
+                                                </span>
+                                                <span>
+                                                    {{ rand(1, 50) }}
+                                                    Ulasan
+                                                </span>
+                                            </p>
+                                            <button class="transition duration-300 ease-in-out text-center w-full text-sm bg-blue-500 hover:bg-blue-600 rounded p-2 text-white mt-auto">
+                                                Lihat Produk
+                                            </button>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
 
                     <h5 class="text-xl tracking-wide font-semibold mb-2">
                         Produk Terkait
                     </h5>
                     <div class="mb-8">
-                        TODO: Tampilin Slider Produk, Max 16 Produk (4 produk/slide)
+                        <div class="grid grid-cols-12 grid-flow-row gap-8">
+                            @foreach ($related_products as $product)
+                                <a href="{{ route('show', $product->slug) }}" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 border border-gray-200 rounded bg-white">
+                                    <div class="aspect-w-1 aspect-h-1">
+                                        <img src="{{ $product->picture_1 }}" alt="" class="w-full h-full rounded-t object-cover">
+                                    </div>
+                                    <div class="p-2">
+                                        <div class="flex flex-col justify-between h-full">
+                                            <p class="font-bold text-orange-500 tracking-wide">
+                                                Rp{{ number_format($product->price, 0, '.', '.') }}
+                                            </p>
+                                            <p class="text-gray-600 text-sm mb-1">
+                                                {{ $product->name }}
+                                            </p>
+                                            <p class="flex text-xs items-center mb-2">
+                                                {{-- TODO: Ulasan --}}
+                                                <x-phosphor-star-fill class="w-4 h-4 text-yellow-400" />
+                                                <span class="border-r border-gray-300 pr-2 mx-1">
+                                                    {{ rand(1, 5) }}
+                                                </span>
+                                                <span>
+                                                    {{ rand(1, 50) }}
+                                                    Ulasan
+                                                </span>
+                                            </p>
+                                            <button class="transition duration-300 ease-in-out text-center w-full text-sm bg-blue-500 hover:bg-blue-600 rounded p-2 text-white mt-auto">
+                                                Lihat Produk
+                                            </button>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
 
                     <h5 class="text-xl tracking-wide font-semibold mb-2">
                         Berdasarkan Pencarian Anda
                     </h5>
                     <div>
-                        TODO: Tampilin Produk, Max 8 Produk
+                        <div class="grid grid-cols-12 grid-flow-row gap-8">
+                            @foreach ($based_on_search_products as $product)
+                                <a href="{{ route('show', $product->slug) }}" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 border border-gray-200 rounded bg-white">
+                                    <div class="aspect-w-1 aspect-h-1">
+                                        <img src="{{ $product->picture_1 }}" alt="" class="w-full h-full rounded-t object-cover">
+                                    </div>
+                                    <div class="p-2">
+                                        <div class="flex flex-col justify-between h-full">
+                                            <p class="font-bold text-orange-500 tracking-wide">
+                                                Rp{{ number_format($product->price, 0, '.', '.') }}
+                                            </p>
+                                            <p class="text-gray-600 text-sm mb-1">
+                                                {{ $product->name }}
+                                            </p>
+                                            <p class="flex text-xs items-center mb-2">
+                                                {{-- TODO: Ulasan --}}
+                                                <x-phosphor-star-fill class="w-4 h-4 text-yellow-400" />
+                                                <span class="border-r border-gray-300 pr-2 mx-1">
+                                                    {{ rand(1, 5) }}
+                                                </span>
+                                                <span>
+                                                    {{ rand(1, 50) }}
+                                                    Ulasan
+                                                </span>
+                                            </p>
+                                            <button class="transition duration-300 ease-in-out text-center w-full text-sm bg-blue-500 hover:bg-blue-600 rounded p-2 text-white mt-auto">
+                                                Lihat Produk
+                                            </button>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -271,9 +363,12 @@
             <div class="col-span-12 sm:col-span-5 md:col-span-4">
                 <div class="bg-white border rounded sticky top-24">
                     <div class="p-4 border-b">
-                        <h3 class="text-2xl font-bold text-orange-500 mb-6">
+                        <h3 class="text-2xl font-bold text-orange-500 mb-2">
                             <span x-html="formatter.format(price * quantity)"></span>
                         </h3>
+                        <p class="text-sm text-gray-500 mb-4">
+                            Stok: {{ $product->stock }}
+                        </p>
                         <div class="flex items-center h-8">
                             <button
                                 x-on:click="if (quantity > 1) quantity--"
@@ -286,10 +381,10 @@
                                 type="number"
                                 class="text-sm h-full w-32 border border-gray-300"
                                 min="1"
-                                max="999"
+                                max="{{ $product->stock }}"
                             />
                             <button
-                                x-on:click="if (quantity < 999) quantity++"
+                                x-on:click="if (quantity < {{ $product->stock }}) quantity++"
                                 class="px-2 h-full border border-gray-300 rounded-r border-l-0"
                             >
                                 <x-phosphor-plus class="w-4 h-4" />
