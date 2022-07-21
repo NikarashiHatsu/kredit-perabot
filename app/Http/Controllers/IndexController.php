@@ -20,6 +20,7 @@ class IndexController extends Controller
     public function show(Product $product)
     {
         $setting = ApplicationSetting::first();
+        $cart = $product->carts()->where('user_id', auth()->id())->first();
 
         if (auth()->user()) {
             $product->views()->create([
@@ -33,6 +34,7 @@ class IndexController extends Controller
         }
 
         return view('show', [
+            'cart' => $cart,
             'interest_rate' => $setting->interest_rate,
             'service_rate' => $setting->service_rate,
             'product' => $product,

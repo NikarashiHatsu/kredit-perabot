@@ -57,6 +57,11 @@ class Product extends Model
         return $this->hasMany(View::class);
     }
 
+    public function carts(): HasMany
+    {
+        return $this->hasMany(Cart::class);
+    }
+
     protected function picture1(): Attribute
     {
         return Attribute::make(

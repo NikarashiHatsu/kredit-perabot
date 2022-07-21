@@ -10,6 +10,7 @@
         }"
         class="flex flex-col"
     >
+        <x-alerts/>
         <div class="grid grid-cols-12 grid-flow-row gap-6">
             <div class="col-span-12 sm:col-span-7 md:col-span-8">
                 <x-swiper>
@@ -246,18 +247,18 @@
                     </h5>
                     <div class="mb-8">
                         <div class="grid grid-cols-12 grid-flow-row gap-8">
-                            @foreach ($might_like_products as $product)
-                                <a href="{{ route('show', $product->slug) }}" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 border border-gray-200 rounded bg-white">
+                            @foreach ($might_like_products as $prod)
+                                <a href="{{ route('show', $prod->slug) }}" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 border border-gray-200 rounded bg-white">
                                     <div class="aspect-w-1 aspect-h-1">
-                                        <img src="{{ $product->picture_1 }}" alt="" class="w-full h-full rounded-t object-cover">
+                                        <img src="{{ $prod->picture_1 }}" alt="" class="w-full h-full rounded-t object-cover">
                                     </div>
                                     <div class="p-2">
                                         <div class="flex flex-col justify-between h-full">
                                             <p class="font-bold text-orange-500 tracking-wide">
-                                                Rp{{ number_format($product->price, 0, '.', '.') }}
+                                                Rp{{ number_format($prod->price, 0, '.', '.') }}
                                             </p>
                                             <p class="text-gray-600 text-sm mb-1">
-                                                {{ $product->name }}
+                                                {{ $prod->name }}
                                             </p>
                                             <p class="flex text-xs items-center mb-2">
                                                 {{-- TODO: Ulasan --}}
@@ -285,18 +286,18 @@
                     </h5>
                     <div class="mb-8">
                         <div class="grid grid-cols-12 grid-flow-row gap-8">
-                            @foreach ($related_products as $product)
-                                <a href="{{ route('show', $product->slug) }}" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 border border-gray-200 rounded bg-white">
+                            @foreach ($related_products as $prod)
+                                <a href="{{ route('show', $prod->slug) }}" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 border border-gray-200 rounded bg-white">
                                     <div class="aspect-w-1 aspect-h-1">
-                                        <img src="{{ $product->picture_1 }}" alt="" class="w-full h-full rounded-t object-cover">
+                                        <img src="{{ $prod->prod }}" alt="" class="w-full h-full rounded-t object-cover">
                                     </div>
                                     <div class="p-2">
                                         <div class="flex flex-col justify-between h-full">
                                             <p class="font-bold text-orange-500 tracking-wide">
-                                                Rp{{ number_format($product->price, 0, '.', '.') }}
+                                                Rp{{ number_format($prod->price, 0, '.', '.') }}
                                             </p>
                                             <p class="text-gray-600 text-sm mb-1">
-                                                {{ $product->name }}
+                                                {{ $prod->name }}
                                             </p>
                                             <p class="flex text-xs items-center mb-2">
                                                 {{-- TODO: Ulasan --}}
@@ -324,18 +325,18 @@
                     </h5>
                     <div>
                         <div class="grid grid-cols-12 grid-flow-row gap-8">
-                            @foreach ($based_on_search_products as $product)
-                                <a href="{{ route('show', $product->slug) }}" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 border border-gray-200 rounded bg-white">
+                            @foreach ($based_on_search_products as $prod)
+                                <a href="{{ route('show', $prod->slug) }}" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 border border-gray-200 rounded bg-white">
                                     <div class="aspect-w-1 aspect-h-1">
-                                        <img src="{{ $product->picture_1 }}" alt="" class="w-full h-full rounded-t object-cover">
+                                        <img src="{{ $prod->prod }}" alt="" class="w-full h-full rounded-t object-cover">
                                     </div>
                                     <div class="p-2">
                                         <div class="flex flex-col justify-between h-full">
                                             <p class="font-bold text-orange-500 tracking-wide">
-                                                Rp{{ number_format($product->price, 0, '.', '.') }}
+                                                Rp{{ number_format($prod->price, 0, '.', '.') }}
                                             </p>
                                             <p class="text-gray-600 text-sm mb-1">
-                                                {{ $product->name }}
+                                                {{ $prod->name }}
                                             </p>
                                             <p class="flex text-xs items-center mb-2">
                                                 {{-- TODO: Ulasan --}}
@@ -408,19 +409,30 @@
                         }"
                         class="p-4"
                     >
-                        <button
-                            x-bind:class="{
-                                'text-orange-500 hover:bg-orange-500 hover:text-white': !isOnCart,
-                                'bg-orange-500 text-white hover:bg-transparent hover:text-orange-500': isOnCart,
-                            }"
-                            x-on:click="isOnCart = !isOnCart"
-                            class="transition duration-300 ease-in-out border border-orange-500 w-full flex justify-center items-center py-3 rounded text-sm"
-                        >
-                            <span>
-                                <span x-html="isOnCart ? 'Hapus dari' : 'Tambah ke'"></span> Keranjang
-                            </span>
-                            <x-phosphor-shopping-cart-fill class="w-4 h-4 ml-2"/>
-                        </button>
+                        @if ($cart != null)
+                            <form action="{{ route('dashboard.cart.destroy', $cart) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="transition duration-300 ease-in-out border border-orange-500 bg-orange-500 text-white hover:bg-white hover:text-orange-500 w-full flex justify-center items-center py-3 rounded text-xs">
+                                    <span>
+                                        Hapus dari Keranjang
+                                    </span>
+                                    <x-phosphor-shopping-cart-fill class="w-4 h-4 ml-2"/>
+                                </button>
+                            </form>
+                        @else
+                            <form action="{{ route('dashboard.cart.store') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="hidden" name="quantity" x-bind:value="quantity">
+                                <button class="transition duration-300 ease-in-out border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white w-full flex justify-center items-center py-3 rounded text-xs">
+                                    <span>
+                                        Tambah ke Keranjang
+                                    </span>
+                                    <x-phosphor-shopping-cart-fill class="w-4 h-4 ml-2"/>
+                                </button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>

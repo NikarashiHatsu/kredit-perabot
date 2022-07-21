@@ -60,12 +60,49 @@
             <a href="javascript:void(0)" class="transition duration-300 ease-in-out items-center hover:bg-gray-200 p-2 rounded h-full flex sm:hidden">
                 <x-phosphor-magnifying-glass-bold class="w-4 md:w-6 h-4:h-6" />
             </a>
-            <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full">
+            <div class="group relative transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full">
                 <x-phosphor-shopping-cart-simple-bold class="w-4 md:w-6 h-4:h-6" />
                 <span class="ml-2 text-sm w-6 h-6 rounded-full bg-gray-200 items-center justify-center hidden sm:flex">
-                    0
+                    {{ $carts->count() }}
                 </span>
-            </a>
+
+                <div class="absolute hidden group-hover:block top-10 left-0 w-64 p-4 bg-white rounded shadow">
+                    <h6 class="font-semibold text-sm">
+                        Keranjang
+                    </h6>
+                    @foreach ($carts as $cart)
+                        <div class="flex mt-2 pt-2 border-t first-of-type:border-t-0">
+                            <img src="{{ $cart->product->picture_1 }}" class="w-16 h-16 rounded border">
+                            <div class="flex flex-col ml-2">
+                                <p class="text-xs font-semibold mb-1">{{ $cart->product->name }}</p>
+                                <p class="text-orange-500 text-xs mb-1">
+                                    Rp{{ number_format($cart->quantity * $cart->product->price) }}
+                                </p>
+                                <div class="flex">
+                                    <form action="{{ route('dashboard.cart.update', $cart) }}" method="post" x-ref="formUpdate" x-data>
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="number" class="border border-gray-300 rounded text-xs w-16 p-1" name="quantity" value="{{ $cart->quantity }}" x-on:blur="$el.value != {{ $cart->quantity }} ? $refs.formUpdate.submit() : null" />
+                                    </form>
+                                    <form action="{{ route('dashboard.cart.destroy', $cart) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="transition duration-300 ease-in-out bg-orange-500 text-white p-1 rounded ml-1">
+                                            <x-phosphor-trash class="w-4 h-4" />
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    <form action="{{ route('checkout') }}" method="post" class="mt-4">
+                        @csrf
+                        <button type="submit" class="border border-orange-500 text-orange-500 transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white text-xs w-full rounded py-1.5">
+                            Checkout
+                        </button>
+                    </form>
+                </div>
+            </div>
             <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full ml-0 md:ml-3">
                 <x-phosphor-bell-bold class="w-4 md:w-6 h-4:h-6" />
                 <span class="ml-3 text-sm w-6 h-6 rounded-full bg-gray-200 items-center justify-center hidden sm:flex">

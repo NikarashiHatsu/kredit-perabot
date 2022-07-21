@@ -17,6 +17,7 @@ Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('
 Route::get('/product/{product:slug}', [\App\Http\Controllers\IndexController::class, 'show'])->name('show');
 Route::get('/search', [\App\Http\Controllers\IndexController::class, 'search'])->name('search');
 Route::get('/category/{category}', [\App\Http\Controllers\IndexController::class, 'category'])->name('category');
+Route::post('/checkout', function() { return auth()->user()->carts; })->name('checkout');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
     Route::view('/', 'dashboard.index')->name('index');
@@ -25,6 +26,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
     Route::resource('category', \App\Http\Controllers\CategoryController::class)->except('show');
     Route::resource('subcategory', \App\Http\Controllers\SubcategoryController::class)->except('show');
     Route::resource('product', \App\Http\Controllers\ProductController::class)->except('show');
+    Route::resource('cart', \App\Http\Controllers\CartController::class)->only('store', 'update', 'destroy');
     Route::resource('creditor', \App\Http\Controllers\UserController::class)->except('show')->parameters([
         'creditor' => 'user',
     ]);
