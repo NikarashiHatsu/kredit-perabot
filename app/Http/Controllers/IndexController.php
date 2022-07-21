@@ -21,6 +21,17 @@ class IndexController extends Controller
     {
         $setting = ApplicationSetting::first();
 
+        if (auth()->user()) {
+            $product->views()->create([
+                'user_id' => auth()->id(),
+            ]);
+        } elseif (($ip = request()->ip()) && ($userAgent = request()->userAgent())) {
+            $product->views()->create([
+                'ip_address' => $ip,
+                'user_agent' => $userAgent,
+            ]);
+        }
+
         return view('show', [
             'interest_rate' => $setting->interest_rate,
             'service_rate' => $setting->service_rate,
