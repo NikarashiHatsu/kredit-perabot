@@ -20,13 +20,14 @@ Route::get('/category/{category}', [\App\Http\Controllers\IndexController::class
 Route::resource('checkout', \App\Http\Controllers\CheckoutController::class)->only(['store', 'index']);
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
-    Route::get('/', function() {
-        if (auth()->user()->role === "user") {
-            return view('dashboard.index_user');
-        }
+    // Route::get('/', function() {
+    //     if (auth()->user()->role === "user") {
+    //         return view('dashboard.index_user');
+    //     }
 
-        return view('dashboard.index');
-    })->name('index');
+    //     return view('dashboard.index');
+    // })->name('index');
+    Route::view('/', 'dashboard.index_user')->name('index');
 
     // Master Data
     Route::resource('category', \App\Http\Controllers\CategoryController::class)->except('show');
