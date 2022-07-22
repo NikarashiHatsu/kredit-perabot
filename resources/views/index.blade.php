@@ -8,21 +8,17 @@
     </div>
 
     <x-swiper>
-        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="https://via.placeholder.com/1600x400.png" /></div>
-        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="https://via.placeholder.com/1600x400.png" /></div>
-        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="https://via.placeholder.com/1600x400.png" /></div>
-        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="https://via.placeholder.com/1600x400.png" /></div>
-        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="https://via.placeholder.com/1600x400.png" /></div>
-        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="https://via.placeholder.com/1600x400.png" /></div>
-        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="https://via.placeholder.com/1600x400.png" /></div>
+        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="{{ asset('images/sliders/slider-desktop.webp') }}" /></div>
+        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="{{ asset('images/sliders/rev-hlw-slider-desktop-2.webp') }}" /></div>
+        <div class="swiper-slide aspect-w-16 aspect-h-4"><img class="rounded" src="{{ asset('images/sliders/slider-desktop (1).webp') }}" /></div>
     </x-swiper>
 
     <div class="grid grid-cols-12 grid-flow-row gap-4 mt-4 mb-8">
-        <div class="col-span-12 sm:col-span-8">
-            <div class="aspect-w-16 aspect-h-2"><img src="https://via.placeholder.com/1600x200.png" class="rounded"/></div>
+        <div class="col-span-12 sm:col-span-9">
+            <div class="aspect-w-16 aspect-h-2"><img src="{{ asset('images/sliders/sisip-panjang-desktop.webp') }}" class="rounded"/></div>
         </div>
-        <div class="col-span-12 sm:col-span-4">
-            <img src="https://via.placeholder.com/800x200.png" class="rounded h-full"/>
+        <div class="col-span-12 sm:col-span-3">
+            <img src="{{ asset('images/sliders/sisip-pendek-desktop.webp') }}" class="rounded w-full h-full"/>
         </div>
     </div>
 
@@ -92,7 +88,7 @@
             <div class="grid grid-cols-6 grid-flow-row gap-4">
                 <div class="col-span-6 sm:col-span-3 md:col-span-2">
                     <div class="aspect-w-1 aspect-h-1">
-                        <img src="https://via.placeholder.com/600x600.png" class="w-full h-full rounded" />
+                        <img src="{{ asset('images/sliders/diskon-kaget-hemat-hingga-50-persen-47194-thumbnail-1658386406.webp') }}" class="w-full h-full rounded" />
                     </div>
                 </div>
                 @foreach ($products->slice(0, 4) as $product)
@@ -135,7 +131,6 @@
             Kategori Pilihan
         </h5>
         <div class="grid grid-cols-8 grid-flow-row gap-8">
-
             @foreach ($categories->slice(0, 8) as $category)
                 <div class="col-span-8 sm:col-span-4 md:col-span-2 lg:col-span-1">
                     <div class="aspect-w-1 aspect-h-1 mb-2">
@@ -155,19 +150,19 @@
         </h5>
         <div class="grid grid-cols-12 grid-flow-row gap-8">
             <div class="col-span-12 sm:col-span-6">
-                <img src="https://via.placeholder.com/1000x300" class="rounded" />
+                <img src="{{ asset('images/sliders/penawaran-saat-ini-desktop.webp') }}" class="rounded" />
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <img src="https://via.placeholder.com/1000x300" class="rounded" />
+                <img src="{{ asset('images/sliders/penwaran-saatini-orange-desktop.webp') }}" class="rounded" />
             </div>
             <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                <img src="https://via.placeholder.com/1000x300" class="rounded" />
+                <img src="{{ asset('images/sliders/oe-desktop.webp') }}" class="rounded" />
             </div>
             <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                <img src="https://via.placeholder.com/1000x300" class="rounded" />
+                <img src="{{ asset('images/sliders/produk-terlaris-desktop.webp') }}" class="rounded" />
             </div>
             <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                <img src="https://via.placeholder.com/1000x300" class="rounded" />
+                <img src="{{ asset('images/sliders/bogo-kuning-desktop.webp') }}" class="rounded" />
             </div>
         </div>
     </section>
