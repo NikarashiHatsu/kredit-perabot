@@ -20,7 +20,13 @@ Route::get('/category/{category}', [\App\Http\Controllers\IndexController::class
 Route::resource('checkout', \App\Http\Controllers\CheckoutController::class)->only(['store', 'index']);
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
-    Route::view('/', 'dashboard.index')->name('index');
+    Route::get('/', function() {
+        if (auth()->user()->role === "user") {
+            return view('dashboard.index_user');
+        }
+
+        return view('dashboard.index');
+    })->name('index');
 
     // Master Data
     Route::resource('category', \App\Http\Controllers\CategoryController::class)->except('show');
@@ -34,6 +40,14 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
     // User Data
     Route::resource('admin', \App\Http\Controllers\AdminController::class)->except('show')->parameters([
         'admin' => 'user',
+    ]);
+
+    // Transaksi
+    Route::resource('order', \App\Http\Controllers\OrderController::class)->only(['index', 'show', 'edit', 'update'])->parameters([
+        'order' => 'checkout',
+    ]);
+    Route::resource('my-order', \App\Http\Controllers\MyOrderController::class)->only(['index', 'show', 'store'])->parameters([
+        'my-order' => 'checkout',
     ]);
 
     // Statistics

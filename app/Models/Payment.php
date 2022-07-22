@@ -6,11 +6,9 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Storage;
 
-class Checkout extends Model
+class Payment extends Model
 {
     use HasFactory;
 
@@ -19,13 +17,15 @@ class Checkout extends Model
         parent::boot();
 
         static::creating(function($model) {
-            $model->user_id = auth()->id();
+            $model->invoice = request()->file('invoice')->storePublicly('invoices');
+            $model->status = "Pending";
+            $model->is_read = false;
         });
     }
 
-    public function user(): BelongsTo
+    public function checkout(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Checkout::class);
     }
 
     public function product(): BelongsTo
@@ -33,12 +33,7 @@ class Checkout extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function payments(): HasMany
-    {
-        return $this->hasMany(Payment::class);
-    }
-
-    protected function paymentReceipt(): Attribute
+    protected function invoice(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => $value != null ? Storage::url($value) : null,
@@ -46,16 +41,12 @@ class Checkout extends Model
     }
 
     protected $fillable = [
-        'user_id',
+        'checkout_id',
         'product_id',
-        'quantity',
-        'price',
-        'duration',
-        'subtotal',
-        'installment',
-        'interest_rate',
-        'service_rate',
-        'payment_receipt',
+        'status',
+        'payment_order',
+        'invoice',
         'is_read',
+        'created_at',
     ];
 }

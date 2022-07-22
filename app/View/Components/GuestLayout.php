@@ -13,7 +13,7 @@ class GuestLayout extends Component
     public function __construct()
     {
         $this->interest_rate = ApplicationSetting::first()->interest_rate;
-        $this->carts = auth()->user()->carts;
+        $this->carts = auth()->user()->carts ?? [];
     }
 
     /**

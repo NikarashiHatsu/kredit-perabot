@@ -60,6 +60,31 @@
                     </span>
                 </a>
 
+                @if (auth()->user()->role == "user")
+                    <a href="javascript:void(0)" class="mb-2 mt-4 pl-5 uppercase text-xs tracking-wider font-bold text-gray-400">
+                        Data Saya
+                    </a>
+                    <a
+                        href="{{ route('dashboard.my-order.index') }}"
+                        @class([
+                            'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.my-order.*'),
+                            'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
+                        ])
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-package" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline>
+                            <line x1="12" y1="12" x2="20" y2="7.5"></line>
+                            <line x1="12" y1="12" x2="12" y2="21"></line>
+                            <line x1="12" y1="12" x2="4" y2="7.5"></line>
+                            <line x1="16" y1="5.25" x2="8" y2="9.75"></line>
+                        </svg>
+                        <span class="ml-2 font-bold">
+                            Pesanan Saya
+                        </span>
+                    </a>
+                @endif
+
                 @if (in_array(auth()->user()->role, ['super_admin', 'admin']))
                     <a href="javascript:void(0)" class="mb-2 mt-4 pl-5 uppercase text-xs tracking-wider font-bold text-gray-400">
                         Data Master
@@ -164,7 +189,13 @@
                     <a href="javascript:void(0)" class="mb-2 mt-4 pl-5 uppercase text-xs tracking-wider font-bold text-gray-400">
                         Transaksi
                     </a>
-                    <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100">
+                    <a
+                        href="{{ route('dashboard.order.index') }}"
+                        @class([
+                            'border-l-blue-500 text-blue-500 bg-blue-100' => request()->routeIs('dashboard.order.*'),
+                            'transition duration-300 ease-in-out flex items-center border-l-4 hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100'
+                        ])
+                    >
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-invoice" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
@@ -173,8 +204,15 @@
                             <line x1="9" y1="13" x2="15" y2="13"></line>
                             <line x1="13" y1="17" x2="15" y2="17"></line>
                         </svg>
-                        <span class="ml-2 font-bold">
-                            Pesanan
+                        <span class="ml-2 font-bold flex justify-between items-center w-full">
+                            <span>
+                                Pesanan
+                            </span>
+                            @if ($orders > 0)
+                                <span class="mr-4 w-5 h-5 rounded-full bg-red-500 text-white flex items-center justify-center text-xs">
+                                    {{ $orders }}
+                                </span>
+                            @endif
                         </span>
                     </a>
                     <a href="javascript:void(0)" class="transition duration-300 ease-in-out flex items-center border-l-4 border-l-transparent hover:border-l-blue-500 pl-4 py-3 hover:bg-blue-100">

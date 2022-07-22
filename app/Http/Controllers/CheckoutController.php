@@ -58,6 +58,7 @@ class CheckoutController extends Controller
 
                 if (Checkout::create($data)) {
                     $cart->delete();
+                    $cart->product()->decrement('stock', $cart->quantity);
                 }
             });
         } catch (\Throwable $th) {

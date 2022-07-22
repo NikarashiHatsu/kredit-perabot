@@ -63,7 +63,12 @@
             <div class="group relative transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full">
                 <x-phosphor-shopping-cart-simple-bold class="w-4 md:w-6 h-4:h-6" />
                 <span class="ml-2 text-sm w-6 h-6 rounded-full bg-gray-200 items-center justify-center hidden sm:flex">
-                    {{ $carts->count() }}
+                    @auth()
+                        {{ $carts->count() }}
+                    @endauth
+                    @guest()
+                        0
+                    @endguest
                 </span>
 
                 <div class="absolute hidden group-hover:block top-10 left-0 w-64 p-4 bg-white rounded shadow">
