@@ -119,17 +119,23 @@
                     Status<br/>Pesanan
                 </span>
             </a>
-            <a href="{{ route('login') }}" class="transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full ml-0 md:ml-3">
-                <x-phosphor-user-bold class="w-4 md:w-6 h-4 md:h-6" />
-                <span class="ml-4 text-xs hidden sm:flex">
-                    @auth
-                    {{ auth()->user()->name }}
-                    @endauth
-                    @guest()
+            @guest()
+                <a href="{{ route('login') }}" class="transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full ml-0 md:ml-3">
+                    <x-phosphor-user-bold class="w-4 md:w-6 h-4 md:h-6" />
+                    <span class="ml-4 text-xs hidden sm:flex">
                         Masuk / Daftar
-                    @endguest
-                </span>
-            </a>
+                    </span>
+                </a>
+            @endguest
+
+            @auth
+                <a href="{{ route('dashboard.index') }}" class="transition duration-300 ease-in-out flex items-center hover:bg-gray-200 p-2 rounded h-full ml-0 md:ml-3">
+                    <x-phosphor-user-bold class="w-4 md:w-6 h-4 md:h-6" />
+                    <span class="ml-4 text-xs hidden sm:flex">
+                        {{ auth()->user()->name }}
+                    </span>
+                </a>
+            @endauth
         </div>
     </div>
 
