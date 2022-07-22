@@ -124,6 +124,11 @@
                                                 Menunggu Verifikasi
                                             </span>
                                         @endif
+                                        @if ($checkout->payments->where('payment_order', $i)->first()->status == "Lunas")
+                                            <span class="bg-green-500 text-white text-xs px-2 py-1 rounded flex justify-center">
+                                                Lunas
+                                            </span>
+                                        @endif
                                     @else
                                         <span class="bg-red-500 text-white px-2 py-1 text-xs rounded flex justify-center">
                                             Belum Dibayar
